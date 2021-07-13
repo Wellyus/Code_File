@@ -1,0 +1,7 @@
+{
+    "files.autoGuessEncoding": true,
+    "files.encoding": "gb2312",
+    "files.associations": {
+        "*.tcc": "cpp"
+    }
+}
