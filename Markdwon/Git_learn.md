@@ -8,10 +8,14 @@
 ``git add <FileName>``  
 - **将文件提交到工作区**  
 ``git commit -m "提交信息"``
+- **删除本地仓库**  
+``rm -rf .git``
 -----
 ## 远程仓库
 - **关联远程仓库**  
 ``git remote add 仓库名 git@github.com:Wellyus/Code_File.git``  
+- **取消关联远程仓库**  
+``git remote remove <Repository_Name>``
 - **第一次推送本地文件到远程仓库**  
 ``git push -u <Repository_Name> main``  
 - **推送本地文件到远程仓库**  
