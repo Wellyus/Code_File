@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>表格的基本结构</title>
+    </head>
+    <body>
+        <table width="400" align="center" border="2">
+            <caption>教师信息表</caption>       <!--<caption>标签表示表格标题-->
+            <thead>
+                <tr>
+                    <th>工号</th>
+                    <th>姓名</th>       <!--表头的单元项用标签<hd>-->
+                    <th>性别</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="3" align="center">这里是表尾</td>      <!--<colspan>标签表示表格单元项可以跨过的列数-->
+                </tr>
+            </tfoot>
+            <tbody align="center">
+                <tr>
+                    <td>8888</td>
+                    <td>刘艺丹</td>
+                    <td>女</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
