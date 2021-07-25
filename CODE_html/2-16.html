@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>表单实例</title>
+    </head>
+    <body>
+        <table align="center" width="500" border="1" cellpadding="2" cellspacing="0" background="‪C:\Users\Galaxy\Desktop\美女.jpg">
+            <form action="2321732226@qq.com" method="POST">
+                <caption><h2>学生注册信息</h2></caption>         <!--标题-->
+                <tr>                        <!--第一行用户输入姓名-->
+                    <th>姓名:</th>
+                    <td><input type="text" value="张三" name="name"></td>
+                </tr>
+                <tr>                <!--第二行，用户输入性别-->
+                    <th>性别:</th>
+                    <td>
+                        <input type="radio" name="sex" value="男" checked>男
+                        <input type="radio" name="sex" value="女">女
+                    </td>
+                </tr>
+                <tr>                <!--第三行，用户输入学历，select标签可供选择-->
+                    <th>学历:</th>
+                    <td>
+                        <select name="xueli">
+                            <option value="1">高中</option>
+                            <option value="2">大专</option>
+                            <option value="3">本科</option>
+                            <option value="4">研究生</option>
+                            <option value="5">其他</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>                <!--第四行，用户选择课程，设置一个复选框-->
+                    <th>选修课程:</th>
+                    <td>
+                        <input type="checkbox" name="couser[]" value="Linux" checked>Linux
+                        <input type="checkbox" name="course[]" value="Apache">Apache
+                        <input type="checkbox" name="course[]" value="Mysql">Mysql
+                        <input type="checkbox" name="course[]" value="PHP">PHP
+                    </td>
+                </tr>
+                <tr>                <!--第五行,用户输入课程评价,textarea标签-->
+                    <th>自我评价:</th>
+                    <td>
+                        <textarea name="self_value" value="..." cols="40" rows="5"></textarea>
+                    </td>
+                </tr>
+                <tr>        <!--第六行,提交和重置按钮-->
+                    <td colspan="2" align="center">
+                        <input type="submit" value="submit">
+                        <input type="reset" value="reset">
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </body>
+</html>
