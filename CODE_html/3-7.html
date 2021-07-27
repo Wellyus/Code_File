@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>类选择器</title>
+        <style>
+            .myClass{           /*以.开头的类选择器，作用于一类标签的部分标签，可以层叠*/
+                color:red;
+            }
+            .yourClass{
+                font-size: 16px;
+                text-decoration:underline;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="yourClass">hello</h2>
+        <span class="myClass yourClass">world!</span>       <!--类选择器允许多个类放在class属性值中-->
+    </body>
+</html>
