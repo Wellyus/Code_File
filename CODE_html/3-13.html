@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>属性选择器</title>
+        <style>
+            p[align]{       /*属性选择器*/
+                color:red;
+                font-size: 48px;
+            }
+            p[aligh=right]{
+                color:blue;
+                font-size: 24px;
+            }
+        </style>
+    </head>
+    <body>
+        <p align="center">Hello World!</p>
+        <p align="right">Hello World too!</p> 
+    </body>
+</html>
