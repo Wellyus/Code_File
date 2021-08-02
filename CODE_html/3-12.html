@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>相邻兄弟选择器</title>
+        <style>
+            h2+span{    /*相邻兄弟选择器只作用于相邻元素的后一个元素*/
+                color:red;
+                font-size: 48px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>hello <span>world!</span></h2>
+        <span>world!</span>
+        <span>hello world!</span>
+    </body>
+</html>
