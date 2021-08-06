@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CSS-伪元素</title>
+        <style>
+            p.p1::first-line{       /*伪元素，为p1类p元素第一行文本设置样式*/
+                color: #f0f;
+                font-size: 40px;
+            }
+            p.p2::first-letter{
+                color: blueviolet;
+                font-size:x-large;
+            }
+            p.p3::before{
+                content:"您好,";        /*字符串做属性值必须要双引号*/
+            }
+            p.p3::after{
+                content:"cool!";
+            }
+        </style>
+    </head>
+    <body>
+        <p class="p1">向文本的首行设置特殊样式<br/>可以使用"first-line"属性</p>
+        <p class="p2">可以使用"first-letter"伪元素向文本的第一个字符设置特殊样式</p>
+        <p class="p3">Wellyus!</p>
+    </body>
+</html>
