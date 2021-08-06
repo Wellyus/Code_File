@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CSS-列表属性</title>
+        <style>
+            #box{
+                background-color:green;
+                margin: 0 auto;
+                height: 40px;
+            }
+            #box ul{
+                list-style: none;
+            }
+            #box ul li{
+                width: 180px;
+                height: 40px;
+                text-align: center;
+                line-height: 40px;
+                float: left;
+            }
+            #box ul li.strong{
+                font-weight: bold;
+            }
+            #box ul li:hover{
+               
+                cursor: pointer;
+            }
+            #box ul li a{
+                text-decoration: none;
+                color: black;
+            }
+            #box ul li:hover a{
+                text-decoration: underline;
+                color: #fc6;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <ul>
+                <li class="strong">新闻</li>
+                <li>军事<a href="http://www.baidu.com">ABCDE</a></li>
+                <li>社会</li>
+                <li>国际</li>
+            </ul>
+        </div>
+    </body>
+</html>
