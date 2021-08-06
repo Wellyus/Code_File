@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CSS伪类-为特定状态的元素做出样式</title>
+        <style>
+            a:link{
+                color: #000000;
+            }
+            a:visited{
+                color: #0f0;
+            }
+            a:hover{
+                color: #FF00FF;
+            }
+            a:active{
+                color: #0000FF;
+            }
+            input:focus{        /*选中获得焦点的输入*/
+                background-color: yellow;
+            }
+            p:last-child{           /*p标记的最后一个标记*/
+                font-size: 24px;
+                vertical-align: middle;
+                background-color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <p><b><a href="3-24.html" target="_blank">这是一个链接</a></b></p>
+        First name:<input type="text" name="fname"><br/>
+        <p>This is some text.</p>
+    </body>
+</html>
