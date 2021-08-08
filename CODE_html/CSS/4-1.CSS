@@ -3,10 +3,12 @@ p{
 }
 span{
     background-color: rgb(red, green, blue);
+    display: block;
 }
 i{
     background-color: rosybrown;
 }
 div{
     background-color: sienna;
+    display: inline;
 }
