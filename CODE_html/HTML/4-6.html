@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>定位元素的层叠-z-index</title>
+        <style>
+            div{
+                width: 100px;
+                height: 100px;
+                background-color: yellow;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                z-index: 3;
+            }
+            #two{
+                top: 10px;
+                left: 10px;
+                background:grey;
+                z-index: 2;
+            }
+            #three{
+                top: 20px;
+                left: 20px;
+                background-color: pink;
+                z-index: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div>1</div>
+        <div id="two">2</div>
+        <div id="three">3</div>
+    </body>
+</html>
