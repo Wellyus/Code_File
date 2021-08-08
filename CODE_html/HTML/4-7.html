@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>浮动</title>
+        <style>
+            *{
+                padding: 0px;
+                margin: 0px;
+            }
+            html,body{
+                width: 100%;
+                height: 100%;
+                background: white;
+            }
+            div.container{
+                width: 80%;
+                height: 100%;
+                background-color: #CF3;
+                margin: 0,auto;
+            }
+            div.header,div.footer{
+                text-align: center;
+                line-height: 80px;
+                height: 80px;
+                background-color: gray;
+                color: white;
+                clear: left;    /*清楚左浮动*/
+            }
+            div.middle{
+                height: 502px;
+                background-color: pink;
+            }
+            div.left,div.content,div.right{
+                background-color: yellow;
+                width: 70%;
+                height: 100%;
+                float: left;
+            }
+            div.left,div.right{
+                background: #99f;
+                width: 15%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">     <!--页面居中-->
+            <div class="header">    <!--页眉-->
+                数学与计算机学院
+            </div>
+            <div class="middle">
+                <div class="left">
+                    <p>Web程序设计基础——HTML、CSS、JavaScript</p>
+                </div>
+                <div class="content">
+                    <h2>CSS 样式表的使用</h2>
+                    <p>http://www.baidu.com</p>
+                    <p>123456780</p>
+                </div>
+                <div class="right">
+                    <p>Web程序设计课程实验显示</p>
+                </div>
+            </div>
+            <div class="footer">    <!--页脚-->
+                版权：2021 Wellyus
+            </div>
+        </div>
+    </body>
+</html>
