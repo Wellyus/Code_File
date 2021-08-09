@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CSS溢出：overflow:visible/hidden</title>
+        <style>
+            .one{
+                width: 100px;
+                height: 100px;
+                background: pink;
+                position: relative;
+                overflow: visible;      /*设置溢出为可见，也可设为hidden，scroll，auto*/
+            }
+            .two{
+                width: 100px;
+                height: 100px;
+                background-color: purple;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="one">
+            <div class="two">
+
+            </div>
+        </div>
+    </body>
+</html>
