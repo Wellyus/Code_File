@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>border:width,style,color</title>
+        <style>
+            p{
+                border: medium double rgb(250,0,255);
+            }
+            p.soliddouble{
+                border: 10px;
+                border-style: solid double;
+                border-color: green blue red;       /*边框显示在元素的背景之上*/
+            }
+        </style>
+    </head>
+    <body>
+        <p>文档中的一些字</p>
+        <p class="soliddouble">文档中的一些字</p>
+    </body>
+</html>
