@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>外边距</title>
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            div{
+                color: #fff;
+                height: 200px;
+            }
+            .center{
+                float: left;
+                width: 100%;
+            }
+            .center .content{               /*在设置好大小的块元素中，只需指定外边距，可以不用指明宽度*/
+                margin: 0 210px 0 110px;
+                background-color: orange;
+                line-height: 200px;
+                text-align: center;
+            }
+            .left{
+                text-align: center;
+                float: left;
+                width: 100px;
+                margin-left: -100%;
+                background: lightseagreen;
+            }
+            .right{
+                float: left;
+                width: 200px;
+                margin-left: -200px;
+                background-color: lightskyblue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="center">
+            <div class="content">center</div>
+        </div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </body>
+</html>
