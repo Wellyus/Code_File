@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CSS动画-变形</title>
+        <style>
+            *{
+                padding: 0px;
+                margin: 0px;
+            }
+            div{
+                width: 200px;
+                height: 200px;
+                background-color: palevioletred;
+                float: left;
+                margin: 50px;
+            }
+            div.box-one{
+                transform: translate(5px,5px);      /*向右，向下平移5个像素*/
+            }
+            div.box-two{
+                transform: rotate(30deg);       /*顺时针旋转*/
+            }
+            div.box-three{
+                transform: scale(0.8,0.8);      /*宽度，高度为原来的0.8倍*/
+            }
+            div.box-four{
+                transform: skew(30deg,20deg);       /*倾斜转换，沿着x轴和y轴*/
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box-one"></div>
+        <div class="box-two"></div>
+        <div class="box-three"></div>
+        <div class="box-four"></div>
+    </body>
+</html>
