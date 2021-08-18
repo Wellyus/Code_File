@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CSS页面布局</title>
+        <style>
+            *{
+                padding: 0px;
+                margin: 0px;
+            }
+            div.container{
+                text-align: center;
+                width: 800px;
+                height: 400px;
+                background-color:aqua;
+                border: 1px solid #000;
+                margin: 0px auto;
+            }
+            div.banner,div.footer{
+                text-align: center;
+                width: 760px;
+                height: 20px;
+                background-color: bisque;
+                margin: 0px 20px 5px 20px;
+            }
+            div.main{
+                width: 760px;
+                height: 300px;
+                background-color: white;
+                margin: 0px 20px 5px 20px;
+            }
+            div.content{
+                letter-spacing: 2px;
+                text-align: center;
+                width: 570px;
+                height: 300px;
+                background-color: chocolate;
+                border: 1px solid #000;
+                float: left;
+            }
+            div.links{
+                letter-spacing: 2px;
+                text-align: center;
+                width: 176px;
+                height: 100%;
+                background-color: rgb(146, 142, 141);
+                border: 1px solid #000;
+                margin-left: 10px;
+                float: left;
+            }
+            div.footer{
+                background-color: yellow;
+                margin: 0px 20px 0px 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">#container
+            <div class="banner">#banner</div>
+            <div class="main">
+                <div class="content">#content</div>
+                <div class="links">#links</div>
+            </div>
+            <div class="footer">#footer</div>
+        </div>
+    </body>
+</html>
