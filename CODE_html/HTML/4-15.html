@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>两栏布局</title>
+        <style>
+            *{
+                padding: 0px;
+                margin: 0px;
+            }
+            #container{
+                width: 600px;
+                height: 200px;
+                background-color: cadetblue;
+            }
+            div.left{
+                width: 200px;
+                height: 100%;
+                background-color: chartreuse;
+                float: left;
+                margin-right: 50px;
+            }
+            div.right{
+                width: 230px;
+                height: 100%;   
+                background-color: chocolate;
+                float: left;
+            }
+            #container::after{
+                content: "AAAAA";
+                display: block;
+                background-color: blue;
+                visibility:visible;
+                clear: both;
+            }
+            .test{
+                width: 10px;
+                height: 10px;
+                background-color: purple;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+        <div class="test">AAAA</div>
+    </body>
+</html>
