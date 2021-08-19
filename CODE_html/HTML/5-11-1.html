@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>事件</title>
+        <script>
+            function myclick(){
+                do{
+                    username=prompt("请问你是何方神圣，报上名来");
+                }while(username=="")
+                alert(username+",久仰大名，请多多关照");
+            }
+        </script>
+    </head>
+    <body>
+        <input type="button" value="启动测试" ondblclick="myclick()">   <!--事件作为属性放在标签后，属性值为一个函数-->
+    </body>
+</html>

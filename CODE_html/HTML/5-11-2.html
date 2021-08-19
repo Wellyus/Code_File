@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf=8">
+        <title>事件</title>
+        <script>
+            window.onload=function(){
+                myBtn=document.getElementById("btn");   //通过ID获取执行事件的元素
+                myBtn.onclick=function(){
+                    do{
+                        mystr=prompt("敢问大侠叫什么");
+                    }while(mystr=="")
+                    alert(mystr+",久仰大名，多多关照");     //提示框，弹出一个字符串
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input type="button" value="test" id="btn">
+    </body>
+</html>
