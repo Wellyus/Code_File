@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript-Array对象</title>
+        <script>
+            console.log("hello world!");
+            window.onload=function(){       //事件不同于方法，无需加括号
+                mycars=new Array();
+                mycars[0] = "Audi";
+                mycars[1] = "Volvo";
+                mycars[2] = "BWM";
+                for(var i in mycars.sort()){
+                    document.write(mycars[i],"<br/>");
+                }
+            }
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

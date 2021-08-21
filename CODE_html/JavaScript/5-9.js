@@ -7,4 +7,3 @@ window.onload=function(){
         document.write("你输入的类型正确!")
     }
 }
-             
