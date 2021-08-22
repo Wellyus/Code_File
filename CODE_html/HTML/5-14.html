@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript-Math</title>
+        <style>
+            #display {
+                width: 100px;
+                background-color: white;
+                color: aqua;
+                font-size: 16px;
+                font-weight: bold;
+            }
+        </style>
+        <script>
+            var num = Math.floor(Math.random()*100);    //random方法设置0-1的随机数，floor方法对数进行下舍
+            window.onload = function(){
+                var btn = document.getElementById("btn");
+                var lab = document.getElementById("display");
+                btn.onclick = function(){
+                    var text = document.getElementById("myIn");
+                    var varText = text.value;
+                    if(isNaN(varText)) {
+                        lab.innerHTML = "please input number !";
+                    } else {
+                        if(varText == num) {
+                            lab.innerHTML = "Correct!";
+                        } else if(varText > num) {
+                            lab.innerHTML = "bigger than the fact !";
+                        } else {
+                            lab.innerHTML = "smaller than the fact !";
+                        }
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input type="text" id="myIn">
+        <input type="button" value="guess number" id="btn">
+        <span id="display"></span>
+    </body>
+</html>
