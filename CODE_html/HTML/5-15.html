@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript - Date</title>
+        <style>
+            #date{
+                font-size: large;
+                color: violet;
+                font-family: "隶书";
+                font-weight: bold;
+            }
+        </style>
+        <script>
+            window.onload = function() {
+                var dateOne = document.getElementById("date");
+                stamp = new Date();
+                var hour = stamp.getHours();        //获取时间
+                if(hour<=12) {
+                    var str1 = "AM."
+                } else {
+                    str = "PM.";
+                    hour -= 12;
+                }
+                var minute = stamp.getMinutes();
+                if(minute < 10) {
+                    var str2 = " ";
+                } else {
+                    str2 = "";
+                }
+                dateOne.innerHTML = stamp.getFullYear()+"年"+(1+stamp.getMonth())+"月"+stamp.getDate()+"日"+"<br/> \
+                "+str1+hour+":"+str2+minute;
+            }
+        </script>
+    </head>
+    <body>
+        <p id="date">嘤嘤嘤</p>
+    </body>
+</html>
