@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript-prototype</title>
+        <script>
+            window.onload = function() {
+                var str1 = new String(" hello ");
+                String.prototype.trimStr = function() {     //删除字符串两端的空格
+                    return this.replace(/(^\s*)|(\s*$)/g,"");
+                }
+                String.prototype.ltrim = function() {       //删除字符串左空格
+                    return this.replace(/(^\s*)/g);
+                }
+                String.prototype.rtrim = function() {       //删除字符串右空格
+                    return this.replace(/(\s*$)/g);
+                }
+                var eg1 =str1.trimStr();
+                document.write("原长: "+str1.length+"<br/>");
+                document.write("长度为： "+eg1.length);
+            }
+        </script>
+    </head>
+</html>

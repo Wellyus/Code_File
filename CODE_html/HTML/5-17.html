@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript-函数</title>
+        <script>
+            window.onload = function(){
+                function Student(name,age){
+                    this.name = name;
+                    this.age = age;
+                    this.alertName = alertName;
+                }
+                function alertName() {
+                    document.write("name"+this.name+"<br/>");
+                    document.write("age"+this.age+"<br/>");
+                }
+                var stu1 = new Student("刘一旦",18);
+                var stu2 = new Student("张文山",20);
+                stu1.alertName();
+                stu2.alertName();
+            }
+        </script>
+    </head>
+</html>

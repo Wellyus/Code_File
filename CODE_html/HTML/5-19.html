@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>函数</title>
+        <script>
+            window.onload = function() {
+                function User(name,age,address,mobile,email) {
+                    this.name = name;
+                    this.age = age;
+                    this.address = address;
+                    this.mobile = mobile;
+                    this.email = email;
+                }
+                User.prototype.show = function() {
+                    document.write("name: " + this.name + "<br/>");
+                    document.write("age: "+ this.age + "<br/>");
+                    document.write("address: " + this.address + "<br/>");
+                    document.write("mobile: " + this.email);
+                }
+                var user1 = new User("小胖",18,"幸福路",1188,"1111@qq.com");
+                user1.show();
+            }
+        </script>
+    </head>
+</html>
