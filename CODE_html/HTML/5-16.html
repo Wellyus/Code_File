@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JSON方法</title>
+        <script>
+            window.onload = function(){
+                var student = {         //定义JSON对象
+                    studentId:"20192020",
+                    username:"阿伟",
+                    tel:{home:88888888,mobile:12334444444},
+                    address:[{city:"武汉",postcode:"420023"},{city:"宜昌",postcode:"443008"}],
+                    show:function(){
+                         document.write("学号："+this.studentId+"<br/>");
+                         document.write("tel:"+this.tel.home+" "+this.tel.mobile+"<br/>");
+                         document.write("address"+this.address[0].city+" "+this.address[0].postcode+"<br/>");
+                    }
+                }
+                student.show();
+                document.write(student.show);
+            }
+        </script>
+    </head>
+</html>
