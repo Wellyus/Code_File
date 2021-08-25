@@ -4,8 +4,8 @@ function Stack() {
     this.push = push;
     this.pop = pop;
     this.peek = peek;
-    this.length = length;
-    this.clear = clear;
+    this.length = Length;
+    this.clear = Clear;
 }
 function push(element) {
     this.dataStore[this.top++] = element;
@@ -16,10 +16,10 @@ function pop() {
 function peek() {
     return this.dataStore[this.top-1];
 }
-function length() {
+function Length() {
     return this.top;
 }
-function clear() {
+function Clear() {
     this.top = 0;
 }
 var stack1 = new Stack();
