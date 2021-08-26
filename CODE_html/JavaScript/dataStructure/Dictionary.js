@@ -24,14 +24,6 @@ function Dictionary() {
         }
     }
 }
-var dictionary1 = new Dictionary();
-dictionary1.add("David",123);
-dictionary1.add("Mike",689);
-dictionary1.add(13,32);
-dictionary1.showAll();
-console.log(dictionary1.find("Mike"));
-dictionary1.remove(13);
-dictionary1.showAll();
-console.log(dictionary1.count());
-dictionary1.clear();
-console.log(dictionary1.count());
+var dictionary = new Dictionary();
+dictionary.clear();
+
