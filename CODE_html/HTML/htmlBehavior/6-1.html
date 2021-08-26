@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>setTimeout方法</title>
+        <script>
+            window.onload = function() {
+                var displayTime = document.getElementById("dispTime");
+                displayTime.value = "hello";
+                interval = 1000;
+                function display() {
+                    var date = new Date();
+                    displayTime.innerHTML = two(date.getHours())+":";
+                    displayTime.innerHTML += two(date.getMinutes())+":";
+                    displayTime.innerHTML += two(date.getSeconds());
+                    //var timeID = window.setTimeout(display,interval);   //递归调用
+                }
+                function two(x) {
+                    return x>=10?x:"0"+x;
+                }
+                var timeID = window.setInterval(display,1000);
+                //window.clearInterval(timeID);
+            }
+        </script>
+    </head>
+    <body>
+        <label id = "dispTime"></label>
+    </body>
+</html>
