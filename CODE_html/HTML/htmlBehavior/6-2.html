@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>setInterval</title>
+        <script>
+            window.onload = function() {
+                var imgCount = 0;
+                var box = document.getElementById("box");
+                var picture = document.getElementById("picture");
+                var number = document.getElementById("number");
+                var numbers = number.getElementsByTagName("li");
+                for(var i = 0; i < numbers.length; ++i) {
+                    numbers[i].onclick = function() {
+                        for(var i = 0; i < numbers.length; ++i) {
+                            numbers[i].classList.remove("active");
+                        }
+                        numbers[i].classList.add("active");
+                        var imgCount = numbers[i].innerHTML-1;
+                        picutre.src = "../../image/"+imgCount+".jfif";
+                    }
+                }
+                function changeImg() {
+                    imgCount++;
+                    imgCount%=5;
+                    picture.src = "../../image/"+imgCount+".jfif";
+                    for(var i = 0; i < numbers.length; ++i) {
+                        numbers[i].classList.remove("active");
+                    }
+                    this.classList.add("active");
+                }
+                var timeOUT = setInterval(changeImg,3000);
+            }
+        </script>
+        <style>
+            * {
+                padding:0px;
+                margin:0px;
+            }
+            #box {
+                width: 400px;
+                height:300px;
+                border:1px solid red;
+                margin:100px auto;
+                position:relative;
+            }
+            #box ul {
+                list-style:none;
+            }
+            #box #picture {
+                width: 400px;
+                height:300px
+            }
+            #box #number {
+                position:absolute;
+                bottom:10px;
+                right: 10px;
+            }
+            #box #number li{
+                float:left;
+                width:20px;
+                height:20px;
+                border:1px;
+                border-radius: 10px;
+                margin:5px;
+                color:red;
+                background-color: white;
+                text-align: center;
+                line-height: 20px;
+            }
+            #number li:hover {
+                font-family: "隶书";
+                color:white;
+                background-color: red;
+                cursor:pointer;
+            }
+            #number li.active {
+                background-color:blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "box">
+            <img src="../../image/2.jfif" id="picture">
+            <ul id="number">
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+    </body>
+</html>
