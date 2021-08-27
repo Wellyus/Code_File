@@ -9,6 +9,7 @@ function nodeBST(data,left,right) {
 }
 function BST() {
     this.root = null;
+    this.sum = 0;
     this.insert= (data) => {
         var current = new nodeBST(data,null,null);
         if(this.root==null) {
@@ -95,6 +96,14 @@ function BST() {
             node.count++;
         }
     }
+    this.getNodesNumbers = (node)=>{
+        if(node!=null) {
+            this.sum++;
+            this.getNodesNumbers(node.left);
+            this.getNodesNumbers(node.right);
+        }
+        return this.sum;
+    }
     this.remove = (data)=>{
         this.root = this.removeNode(this.root,data);
     }
@@ -137,3 +146,4 @@ for(var i = 0; i < 100; ++i) {
     bst.update(Math.floor(80+Math.random()*20));
 }
 bst.inOrder(bst.root);
+console.log(bst.getNodesNumbers(bst.root));
