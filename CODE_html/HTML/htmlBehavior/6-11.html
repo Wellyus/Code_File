@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>cloneNode</title>
+        <script>
+            window.onload = ()=>{
+                var yourNode = document.getElementById("yourNode");
+                var node = yourNode.getElementsByTagName("li")[2].cloneNode(true);      //参数设置为true时复制该节点的所有子节点
+                var myNode = document.getElementById("myNode");
+                myNode.appendChild(node);
+            }
+        </script>
+    </head>
+    <body>
+        <ul id="yourNode">
+            <li>football</li>
+            <li>basketball</li>
+            <li>volleyball</li>
+        </ul>
+        <ul id="myNode">
+            <li>football</li>
+            <li>backetball</li>
+        </ul>
+    </body>
+</html>

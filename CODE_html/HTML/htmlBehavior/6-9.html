@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta  charset="UTF-8">
+        <title>appendChild</title>
+        <script>
+            window.onload = ()=>{
+                var newNode = document.createElement("li");         //创建节点
+                var newText = document.createTextNode("badminton");     //创建文本节点
+                newNode.appendChild(newText);                       //文本节点作为子节点
+                document.getElementById("myNode").appendChild(newNode);     //向节点添加子节点
+            }
+        </script>
+    </head>
+    <body>
+        <ul id="myNode">
+            <li>music</li>
+            <li>football</li>
+            <li>film</li>
+        </ul>
+    </body>
+</html>

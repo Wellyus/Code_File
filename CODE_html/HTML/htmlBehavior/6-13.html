@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>insertBefore</title>
+        <script>
+            window.onload = ()=>{
+                let myNode = document.getElementById("myNode");
+                let current = myNode.getElementsByTagName("li")[2];
+                let newNode = document.createElement("li");
+                let TextNode = document.createTextNode("dance");
+                newNode.appendChild(TextNode);
+                myNode.insertBefore(newNode,current);       //在子节点之前插入节点
+            }
+        </script>
+    </head>
+    <body>
+        <ul id="myNode">
+            <li>music</li>
+            <li>football</li>
+            <li>swimming</li>
+        </ul>
+    </body>
+</html>

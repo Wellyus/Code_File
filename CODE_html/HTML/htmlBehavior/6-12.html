@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>replaceChild</title>
+        <script>
+            window.onload = ()=>{
+                let myNode = document.getElementById("myNode");
+                let nodes = myNode.getElementsByTagName("li");
+                let lastNodeIndex = nodes.length-1;
+                let current = nodes[lastNodeIndex];
+                let newNode = document.createElement("li");     
+                let textNode = document.createTextNode("pingpong");
+                newNode.appendChild(textNode);
+                myNode.replaceChild(newNode,current);       //替换子节点
+            }
+        </script>
+    </head>
+    <body>
+        <ul id="myNode">
+            <li>football</li>
+            <li>basketball</li>
+            <li>volleyball</li>
+        </ul>
+    </body>
+</html>
