@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>document.getElementById属性</title>
+        <script>
+            window.onload = ()=>{
+                var myId = document.getElementById("myId");         //通过id获取第一个匹配的元素
+                alert(myId.nodeName + " is visited!");              //nodeName表示节点名
+            }
+        </script>
+    </head>
+    <body>
+        <input type="text" id="myId" name="myId">
+        <div id="myId">
+            getElementById
+        </div>
+    </body>
+</html>
