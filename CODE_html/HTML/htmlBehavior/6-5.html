@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>document属性</title>
+        <style>
+            body {
+                background-color: #cf9;
+            }
+        </style>
+        <script>
+            window.onload = function() {
+                myDisp = document.getElementById('disp');
+                myDisp.innerHTML = "当前文档的标题：" + document.title + "<br/>";
+                myDisp.innerHTML += "当前文档的最后修改日期：" + document.lastModified + "<br/>";
+                myDisp.innerHTML += "当前文档中包含" + document.links.length + "个超级链接" + "<br/>";
+                myDisp.innerHTML += "图像个数: " + document.images.length + "， 表单个数：" + document.forms.length;
+            }
+        </script>
+    </head>
+    <body>
+        <a href="http://www.whu.edu.cn">link1</a>
+        <a href="http://www.baidu.com">link2</a>
+        <img src="../../image/1.jfif" height="100" width="120">
+        <img src="../../image/2.jfif" height="100" width="120">
+        <form action = "2321732226@qq.com">
+            <input type="text" id="username">
+        </form>
+        <div id="disp"></div>
+    </body>
+</html>
