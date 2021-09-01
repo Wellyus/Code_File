@@ -4,30 +4,43 @@
         <meta charset="utf-8">
         <title>setInterval</title>
         <script>
-            window.onload = function() {
-                var imgCount = 0;
+            window.onload = ()=>{   
+                //设定图片编号
+                var imgCount = 0;            
                 var box = document.getElementById("box");
+                //获取图片元素，该表资源地址
                 var picture = document.getElementById("picture");
+                //获取列表项集合，删除和添加类样式
                 var number = document.getElementById("number");
                 var numbers = number.getElementsByTagName("li");
-                for(var i = 0; i < numbers.length; ++i) {
+                
+                for(let i = 0; i < numbers.length; ++i) {
                     numbers[i].onclick = function() {
-                        for(var i = 0; i < numbers.length; ++i) {
-                            numbers[i].classList.remove("active");
+                        for(var j = 0; j < numbers.length; ++j) {
+                            numbers[j].classList.remove("active");
                         }
                         numbers[i].classList.add("active");
-                        var imgCount = numbers[i].innerHTML-1;
-                        picutre.src = "../../image/"+imgCount+".jfif";
+                        imgCount = numbers[i].innerHTML-1;
+                        picture.src = "../../image/"+imgCount+".jfif";
                     }
                 }
+                
+                picture.onmouseover = ()=>{
+                    window.clearInterval(timeOUT);
+                }
+                /*
+                picture.onmouseout = ()=>{
+                    var timeOUT = window.setInterval(changeImg,3000);
+                }
+                */
                 function changeImg() {
                     imgCount++;
                     imgCount%=5;
                     picture.src = "../../image/"+imgCount+".jfif";
-                    for(var i = 0; i < numbers.length; ++i) {
+                    for(let i = 0; i < numbers.length; ++i) {
                         numbers[i].classList.remove("active");
                     }
-                    this.classList.add("active");
+                    numbers[imgCount].classList.add("active");
                 }
                 var timeOUT = setInterval(changeImg,3000);
             }
@@ -38,9 +51,9 @@
                 margin:0px;
             }
             #box {
-                width: 400px;
-                height:300px;
-                border:1px solid red;
+                width: 800px;
+                height:500px;
+                border:1px solid rgb(190, 25, 25);
                 margin:100px auto;
                 position:relative;
             }
@@ -48,8 +61,8 @@
                 list-style:none;
             }
             #box #picture {
-                width: 400px;
-                height:300px
+                width: 800px;
+                height:500px
             }
             #box #number {
                 position:absolute;
@@ -63,19 +76,25 @@
                 border:1px;
                 border-radius: 10px;
                 margin:5px;
-                color:red;
-                background-color: white;
+                color:white;
                 text-align: center;
                 line-height: 20px;
             }
             #number li:hover {
                 font-family: "隶书";
-                color:white;
-                background-color: red;
+                color:black;
                 cursor:pointer;
             }
-            #number li.active {
-                background-color:blue;
+            li.active {
+                background-color:#F30;
+            }
+            #disp {
+                width: 300px;
+                height:300px;
+                background-color:black
+            }
+            #disp:hover {
+                background-color:white;
             }
         </style>
     </head>
@@ -90,5 +109,6 @@
                 <li>5</li>
             </ul>
         </div>
+        <div id="disp">disp</div>
     </body>
 </html>
