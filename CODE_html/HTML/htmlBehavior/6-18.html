@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <haed>
+        <meta charset="UTF-8">
+        <title>form></title>
+        <script>
+            window.onload = ()=>{
+                let myBtn = document.getElementById("btn");
+                myBtn.onclick = ()=>{
+                    let newWin = window.open("","","height=300,width=350");
+                    newWin.document.write("文档中包含"+document.form1.length);
+                    for(let i=0; i<document.form1.length; ++i) {
+                        newWin.document.write("<br/>name of element of form1 is : "+document.form1.elements[i].name);
+                    }       //表单元素放在elements[]中
+                    
+                }
+            }
+        </script>
+    </haed>
+    <body>
+        <form name="form1" action="">
+            文本框1:<input type="text" name="text1"><br/>
+            文本框2:<input type="text" name="text2"><br/>
+            <h3>单机按钮显示表单中的元素信息</h3>
+            单机按钮<input type="button" id="btn" name="btn1" value="显示表单中元素名称">
+        </form>
+    </body>
+</html>

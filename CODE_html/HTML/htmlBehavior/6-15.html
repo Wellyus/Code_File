@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>firstChild,parentNode,nextSibling</title>
+        <script>
+            window.onload = ()=>{
+                let ul = document.getElementById("ul");
+                let disp = document.getElementById("disp");
+                disp.innerHTML = disp.innerHTML + "ul节点的第一个子节点为 " + ul.firstChild.innerHTML + "<br/>";
+                disp.innerHTML = disp.innerHTML + "ul节点的最后一个子节点为 " + ul.lastChild.innerHTML + "<br/>";
+                disp.innerHTML = disp.innerHTML + "ul节点的父节点为 " + ul.parentNode.nodeName + "<br/>";
+                disp.innerHTML = disp.innerHTML + "ul节点的第一个节点的兄弟节点为 " + ul.firstChild.nextSibling.innerHTML + "<br/>";
+                disp.innerHTML = disp.innerHTML + "ul节点的最后一个节点的前兄弟节点为 " + ul.lastChild.previousSibling.innerHTML;
+            }
+        </script>
+    </head>
+    <body>
+        <div id="main">
+            <ul id="ul">
+                <li>muscic</li>
+                <li>football</li>
+                <li>badminton</li>
+                <li>swimming</li>
+            </ul>
+        </div>
+        <div id="disp"></div>
+    </body>
+</html>

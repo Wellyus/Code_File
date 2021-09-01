@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>childNodes属性</title>
+        <script>
+            window.onload = ()=>{
+                let ul = document.getElementById("ul");
+                const childNodes = ul.childNodes;
+                let span1 = document.getElementById("span1");
+                let span2 = document.getElementById("span2");
+                let span3 = document.getElementById("span3");
+                let span4 = document.getElementById("span4");
+                for(let i = 0; i < childNodes.length; i++) {
+                    span2.innerHTML = span2.innerHTML + childNodes[i].nodeType + "_";
+                    span3.innerHTML = span3.innerHTML + childNodes[i].nodeName + "_";
+                    span4.innerHTML = span4.innerHTML + childNodes[i].nodeValue + "_";
+                }
+                span1.innerHTML = childNodes.length;
+            }  
+        </script>
+    </head>
+    <body>
+        <ul id="ul">            //ul元素会把空的文本节点也当成一个节点
+            basketball
+            <li>music</li>
+            pingpong
+            <li>football</li>
+            badminton
+        </ul>
+        childNodes属性长度为:<span id="span1"></span><br/>
+        节点类型分别为:<span id="span2"></span><br/>
+        节点名分别为:<span id="span3"></span><br/>
+        节点值为:<sapn id="span4"></sapn><br/>
+    </body>
+</html>
