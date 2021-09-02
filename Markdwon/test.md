@@ -72,4 +72,6 @@ H~2~0
 
 @import "test.jpg"
 
+![this](d:/CODE_FILE/CODE_HTML/image/0.jfif)
+
 
