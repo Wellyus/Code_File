@@ -2,7 +2,7 @@
 **题目描述**:给定一组面值不同的硬币大小coins[]，和目标零钱amount，求最少硬币数
 **分析**: 状态转移方程，coinChange(amount) = min(coinChange(amount-coin)+1)
 * 暴力递归写法：
-```JavaScript{.line-numbers}
+```JavaScript{.line-numbers, highlight=12}
 function coinChange(coins,amount) {
     const dp = (n)=>{
         if(n===0) {
@@ -24,7 +24,7 @@ function coinChange(coins,amount) {
 ```
 ***
 * 带备忘录的递归写法:
-```JavaScript{.line-numbers}
+```JavaScript{.line-numbers, highlight=16}
 function coinChange(coins,amount) {
     var cache = newArrayl(amount+1);
     const dp = (n)=>{
@@ -51,7 +51,7 @@ function coinChange(coins,amount) {
 ```
 ***
 * 带备忘录的迭代写法:
-```JavaScript{.line-numbers} 
+```JavaScript{.line-numbers, highlight=12} 
 function coinChange(coins,amount) {
     //dp数组记录已经计算的钱数
     var dp = new Array(amount+1); 
