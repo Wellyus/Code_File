@@ -28,11 +28,11 @@
                 picture.onmouseover = ()=>{
                     window.clearInterval(timeOUT);
                 }
-                /*
+                
                 picture.onmouseout = ()=>{
-                    var timeOUT = window.setInterval(changeImg,3000);
+                    timeOUT = window.setInterval(changeImg,3000);
                 }
-                */
+                
                 function changeImg() {
                     imgCount++;
                     imgCount%=5;
