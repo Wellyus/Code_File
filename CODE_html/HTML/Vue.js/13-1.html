@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <meta  charset="UTF-8">
+        <title>vue程序</title>
+        <script src="Vue.min.js"></script>
+    </head>
+    <body>
+        <div id="test">
+            <p>{{msg}}</p>
+        </div>
+        <script>
+            var vm = new Vue({
+                el:'#test',
+                data:{
+                    msg:'Hello Vue World!'
+                }
+            });
+        </script>
+    </body>
+</html>

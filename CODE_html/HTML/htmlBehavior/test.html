@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script>
+            window.onload = function(){
+                let texts = document.getElementsByName("text");
+                texts[texts.length-1].onchange = function(){
+                    let text = document.getElementsByName("text");
+                    for(let i=0; i<=text.length-2; i++) {
+                        text[i].value = text[text.length-1].value;
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form name="form1" onsubmit="return foo();">
+            <input type="text" value="default" name="text"><br/>
+            <input type="text" name="text"><br/>
+            <input type="text" name="text"><br/>
+        </form>
+    </body>
+</html>
