@@ -55,6 +55,7 @@ const coinChange = (coins,amount)=>{
   console.log(a);
   */
 //迭代写法，自底向上
+/*
 const coinChange1 = (coins,amount)=>{
     const dp = new Array(amount+1);
     dp.fill(amount+1);
@@ -72,5 +73,20 @@ const coinChange1 = (coins,amount)=>{
     return dp[amount]==amount+1?-1:dp[amount];
 }
 let b = coinChange1([1,2],10);
-console.log(b);
-  
+console.log(b);*/
+class Book {
+    constructor(name) {
+        this.name = name;
+    }
+    set h1(name) {
+        this.name = name;
+    }
+    get h2() {
+        return this.name;
+    }
+}
+let book = new Book(`hobby`);
+console.log(book.name);
+console.log(book.h2);
+book.h1 = `alogorithm`;
+console.log(book.h2);
