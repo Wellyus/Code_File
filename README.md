@@ -8,7 +8,7 @@
 * [Graph.js](https://github.com/Wellyus/Code_File/blob/main/CODE_html/JavaScript/dataStructure/Graph.js)
 * [Dictionary.js](https://github.com/Wellyus/Code_File/blob/main/CODE_html/JavaScript/dataStructure/Dictionary.js)
 * [HashTable.js](https://github.com/Wellyus/Code_File/blob/main/CODE_html/JavaScript/dataStructure/HashTable.js)
-* [Sort.js](https://github.com/Wellyus/Code_File/blob/main/CODE_html/JavaScript/dataStructure/sort)
+* [Sort.js](https://github.com/Wellyus/Code_File/tree/main/CODE_html/JavaScript/dataStructure/Sort)
     * bubbleSort.js
     * bucketsSort.js
     * countingSort.js
