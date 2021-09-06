@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>RE后向引用</title>
+        <script>
+            //RE后向引用可以用\1\2或者\k<n1>
+            //var pattern = /^(\d)(\d)\2\1|(\d)\3(\d)\4$/;
+            var pattern = /^(?<n1>\d)(?<n2>\d)\k<n1>\k<n2>|(?<n3>\d)\k<n3>(?<n4>\d)\k<n4>$/;
+            var arr = ["1212","2345","1155","2367","2233"];
+            for(let i = 0; i < arr.length; i++) {
+                if(pattern.test(arr[i])) {
+                    document.write(`${arr[i]}<br/>`);
+                }
+            }
+        </script>
+    </head>
+</html>

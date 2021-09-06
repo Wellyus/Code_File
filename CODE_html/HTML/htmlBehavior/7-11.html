@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>RE-String.replace(RE,str)</title>
+        <script>
+            window.onload = ()=>{
+                const str = `fuck you,bitch,dog son`;
+                const str1 = `**`;
+                let RE = /uc|it|og|on/g;
+                const newStr = str.replace(RE,str1);
+                document.write(`源串为:${str}`);
+                document.write(`<br/>替换敏感词后为:${newStr}`);
+            }
+        </script>
+    </head>
+    <body></body>
+</html>

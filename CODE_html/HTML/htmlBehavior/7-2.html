@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>regular expression</title>
+        <script>
+            window.onload = ()=>{
+                var pattern = /[A-Za-z]*is+/g;
+                var pattern1 = /^1[35]3\d{8}|18[019]\d{8}$/;
+                var arr = ["13332321456","18938393843","15389787536","18178754893"];
+                //var str = "This iss iss test";
+                //var strArr = str.match(pattern);
+                for(let i = 0; i < arr.length; i++) {
+                    if(pattern1.test(arr[i])) {
+                        document.write(`${arr[i]}<br/>`);
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

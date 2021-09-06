@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>RE-test</title>
+        <script>
+            window.onload = ()=>{            
+                let btn = document.getElementById(`btn`);
+                //example:1234@qq.com
+                let pattern = /^\w+@(\w+\.)+\w+/;
+                btn.onclick = ()=>{
+                    let text = document.form1.email;
+                    let str = text.value;
+                    if(pattern.test(str)) {
+                        alert(`your email address is legal!`);
+                    } else {
+                        alert(`your email address is illegal!`);
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form name="form1" action="login.aspx">
+            please input your email address:
+            <!--表单元素通过ID访问，或者表单名来访问，getElementsByName仅仅用来访问radio,checkbox元素-->
+            <input type="text" name="email" value="1234@qq.com">
+            <input type="button" id = "btn" value="check">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>RE-match</title>
+        <script>
+            window.onload = ()=>{
+                const url = `http://www.baidu.com?a=1&b=2&c=3`;
+                let reg = /(([^?&=]+)=([^?&=])+)+/;
+                const arr = url.match(reg);
+                for(let i = 0; i < arr.length; i++) {
+                    document.write(`${arr[i]}<br/>`);
+                }
+                //无g修饰符的RE的match方法返回的数组第一个元素为匹配的子串，剩下的元素为与RE子表达式匹配的信息，input属性返回原串，index属性返回匹配的索引
+                document.write(`${arr.input},${arr.index}`);
+            }
+        </script>
+    </head>
+    <body></body>
+</html>

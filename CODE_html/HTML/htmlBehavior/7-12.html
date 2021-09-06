@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <meta charset="utf-8">
+    <title>RE-str.search(RE)</title>
+    <script>
+        window.onload = ()=>{
+            const str = `39657675`;
+            let RE = /(?<n1>\d)(?<n2>\d)\d\k<n2>\k<n1>/g;
+            const pos = str.search(RE);
+            if(pos==-1) {
+                alert(`no matched string!`);
+            } else {
+                document.write(`index of matched string is ${pos}<br/>matched string is ${str.match(RE)}`);
+            }
+        }
+    </script>
+    <body></body>
+</html>

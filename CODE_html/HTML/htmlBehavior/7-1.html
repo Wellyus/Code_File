@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>regular expression</title>
+        <script>
+            window.onload = ()=>{
+                //定义正则表达式，匹配一串数字，多次匹配
+                var pattern = /\d+/g;
+                var str = "hello231jjf234j43";
+                var strArr = str.match(pattern);
+                for(let i = 0; i < strArr.length; i++) {
+                    document.write(`匹配的第${i+1}个数字串为${strArr[i]}<br/>`);
+                }
+            }
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
