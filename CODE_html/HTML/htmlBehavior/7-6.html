@@ -6,14 +6,15 @@
         <script>
             window.onload = ()=>{
                 //对^字符串开始和$字符串结束有影响，可以识别
-               /* 
-                var str = `linUx fjdk;a fd\nLinux jfkda jd;a`;
-                var pattern = /^linux/igm;
+               
+                var str = `linUx\nLinux jfkda jd;a`;
+                var pattern = /^linux$/igm;
                 var arr = str.match(pattern);
                 for(let i = 0; i < arr.length; i++) {
                     document.write(`${arr[i]}<br/>`);
                 }
-                */
+                
+               /*
                var str = `<b>Linux</b> an <b>php</b> linux abc`;
                var pattern = /<b>.*?<\/b>/g;
                //RE默认为贪婪模式，即一次读取所有字符，再从右向左删除；懒惰模式从左向右读取字符，匹配后再次匹配
@@ -21,6 +22,7 @@
                for(let i = 0; i < arr.length; i++) {
                    console.log(`${arr[i]}`);
                }
+               */
 
             }
         </script>
