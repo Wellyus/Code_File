@@ -2,7 +2,7 @@
 * [LList.js](https://github.com/Wellyus/Code_File/blob/main/CODE_html/JavaScript/dataStructure/LList.js)
 * [Stack.js](https://github.com/Wellyus/Code_File/blob/main/CODE_html/JavaScript/dataStructure/Stack.js)
 * [Array.js](https://github.com/Wellyus/Code_File/blob/main/CODE_html/JavaScript/dataStructure/Array.js)
-* [Heap.js](https://github.com/Wellyus/Code_File/blob/main/CODE_html/JavaScript/dataStructure/Heap.js)
+* [Heap.js](https://github.com/Wellyus/Code_File/blob/main/CODE_html/JavaScript/dataStructure/heap.js)
 * [BST.js](https://github.com/Wellyus/Code_File/blob/main/CODE_html/JavaScript/dataStructure/BST.js)
 * [ALV.js](https://github.com/Wellyus/Code_File/blob/main/CODE_html/JavaScript/dataStructure/ALV.js)
 * [Graph.js](https://github.com/Wellyus/Code_File/blob/main/CODE_html/JavaScript/dataStructure/Graph.js)
