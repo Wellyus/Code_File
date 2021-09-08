@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "/*\r ~~~\r  */",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "jquery": "^3.6.0"
+  },
   "devDependencies": {
     "eslint": "^7.32.0"
   },
