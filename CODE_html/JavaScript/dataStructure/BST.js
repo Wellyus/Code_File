@@ -43,6 +43,20 @@ function BST() {
             this.inOrder(node.right);
         }
     }
+    //迭代中序遍历
+    this.reInOrder = (node) => {
+        let current = node;
+        const stack = [];
+        while(current!==null||stack.length>0) {
+            if(current!==null) {
+                stack.push(current);
+                current = current.left;
+            }
+            current = stack.pop();
+            console.log(current.data);
+            current = current.right;
+        }
+    }
     this.preOrder = (node) => {
         if(node!=null) {
             console.log(node.show());
