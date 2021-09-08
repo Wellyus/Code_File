@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>表单验证</title>
+        <script>
+            window.onload = ()=>{
+                //获取表单提交按钮
+                let check = document.form1.check;
+                //获取输入文本框元素和提示框元素
+                const regex = document.getElementsByClassName("regex");
+                const error = document.getElementsByClassName("error");
+                //const regex = document.getElementsByTagName(`input`);
+                //const error = document.getElementsByTagName(`span`);
+                for(let i = 0; i < regex.length; i++) {
+                    //标记元素，方便为元素添加行为
+                    regex[i].index = i;
+                    //添加失去焦点属性
+                    regex[i].onblur = ()=>{
+                        switch(regex[i].index) {
+                            case 0: 
+                                let RE = /^\w{6-15}$/;
+                                let spaceError = `username cannot be empty!`;
+                                let REError = `length of username must be 6 to 15`;
+                                testResult(regex[i],RE,regex[i].index,spaceError,REError);
+                                break;
+                            case 1:
+                                let RE = /^\w{6-15}$/;
+                                let spaceError = `password cannot be empty!`;
+                                let REError = `length of password must be 6 to 15`;
+                                testResult(regex[i],RE,regex[i].index,spaceError,REError);
+                                break;
+                            case 2:
+                                if(regex[2].value === ``) {
+                                    error[2].innerHTML = `password cannot be empty`;
+                                    regex[2].data = 1;
+                                }
+                                if(regex[1].value !== regex[2].value) {
+                                    error[2].innerHTML = `password must be same`;
+                                    regex[2].data = 1;
+                                }
+                                break;
+                            case 3:
+                                let RE = /^1[3578]\d{9}$/;
+                                let spaceError = `phonenumber cannot be empty`;
+                                let REError = `phonenumber must be 11 numbers that is started by 13 or 15 or 17 or 18`;
+                                testResult(regex[i],RE,regex[i].index,spaceError,REError);
+                                break;
+                            case 4:
+                                let RE = /^\w+@(\w+\.)+\w+$/;
+                                let spaceError = `email address cannot be empty`;
+                                let REError = `type if email address is illegal!`;
+                                testResult(regex[i],RE,regex[i].index,spaceError,REError);
+                                break;
+                        }
+                    }
+                }
+                function testResult(obj,RE,index,spaceError,REError) {
+                    obj.data = 0;
+                    if(obj.value === ``) {
+                        error[index].innerHTML = spaceError;
+                        obj.data = 1;
+                    }
+                    if(obj.value.search(RE)===-1) {
+                        error[index].innerHTML = REError;
+                        obj.data = 1;
+                    }
+                }
+                check.onclick = ()=>{
+                    let total = 0;
+                    for(let i = 0; i < regex.length; i++) {
+                        total += regex[i].data;
+                    }
+                    if(total>0) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form name="form1" action="">
+            username:   <input type="text"      name="username" class="regex"><span class="error">888</span><br/>
+            password:   <input type="password"  name="password" class="regex"><span class="error"></span><br/>
+            confirm:    <input type="password"  name="confirm"  class="regex"><span class="error"></span><br/>
+            phone:      <input type="text"      name="phone"    class="regex"><span class="error"></span><br/>
+            email:      <input type="text"      name="email"    class="regex"><span class="error"></span><br/>
+                        <input type="submit"    name="check"    value="log in">
+        </form>
+    </body>
+</html>

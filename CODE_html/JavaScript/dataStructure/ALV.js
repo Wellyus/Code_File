@@ -30,9 +30,39 @@ function ALV() {
         var factor = this.nodeHeight(node.left) - this.nodeHeight(node.right);
         return factor;
     }
+    this.isALV = (node)=>{
+        if(this.balanceFactor(node)==2) {
+            if(this.balanceFactor(node.left)==1) {
+                node = this.LLRotation(node);
+            } else {
+                node = this.LRRotation(node);
+            }
+        }
+        if(this.balanceFactor(node)==-2) {
+            if(this.balanceFactor(node.right)==1) {
+                node = this.RLRotation(node);
+            } else {
+                node = this.RRRotation(node);
+            }
+        }
+        return node;
+    }
     this.insert = (data)=>{
         this.root = this.insertNode(this.root,data);
     }
+    this.insertNode = (node,data)=>{
+        if(node==null) {
+            node = new NNode(data,null,null);
+        } else if(data < node.data) {
+            node.left = this.insertNode(node.left,data);
+        } else if(data > node.data) {
+            node.right = this.insertNode(node.right,data);
+        } else {
+            node.count++;
+        }
+        node = this.isALV(node);
+        return node;
+        }
     this.LLRotation = (node)=>{
         var current = node.left;
         node.left = current.right;
@@ -56,36 +86,6 @@ function ALV() {
         node = this.RRRotation(node);
         return node;
     }
-    this.isALV = (node)=>{
-        if(this.balanceFactor(node)==2) {
-            if(this.balanceFactor(node.left)==1) {
-                node = this.LLRotation(node);
-            } else {
-                node = this.LRRotation(node);
-            }
-        }
-        if(this.balanceFactor(node)==-2) {
-            if(this.balanceFactor(node.right)==1) {
-                node = this.RLRotation(node);
-            } else {
-                node = this.RRRotation(node);
-            }
-        }
-        return node;
-    }
-    this.insertNode = (node,data)=>{
-        if(node==null) {
-            node = new NNode(data,null,null);
-        } else if(data < node.data) {
-            node.left = this.insertNode(node.left,data);
-        } else if(data > node.data) {
-            node.right = this.insertNode(node.right,data);
-        } else {
-            node.count++;
-        }
-        node = this.isALV(node);
-        return node;
-        }
     this.getMin = (node)=>{
         var current = node;
         while(current.left!=null) {

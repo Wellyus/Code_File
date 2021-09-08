@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Province City </title>
+        <script>
+            window.onload = ()=>{
+                let selectedPro = ``;
+                const proArr = [`河南`,`湖北`,`湖南`];
+                const arr = [];
+                arr[0] = `郑州,开封,洛阳,安阳,许昌`;
+                arr[1] = `武汉,宜昌,黄石,荆门,十堰`;
+                arr[2] = `长沙,株洲,娄底,岳阳,湘潭`;
+                let province = document.getElementById(`province`);
+                let city = document.getElementById(`city`);
+                let result = document.getElementById(`result`);
+                initCity(0);
+                province.onchange = ()=>{
+                    let index = province.value;
+                    initCity(index);
+                }
+                function initCity(index) {
+                    const cityArr = arr[index].split(`,`);
+                    for(let i = 0; i < cityArr.length; i++) {
+                        //新建一个Option对象,第一个元素为文本内容即innerHTML,第二个元素为属性值即value;
+                        city[i] = new Option(cityArr[i],cityArr[i]);
+                    }
+                    //可以用province.value访问当前选中元素的属性值,innerHTML为所有元素的文本内容
+                    //province为包含元素的数组
+                    selectedPro = proArr[province.value];
+                    result.innerHTML = `${selectedPro}省${city.value}市`;
+                }
+                city.onchange = ()=>{
+                    result.innerHTML = `${selectedPro}省${city.value}市`;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        plaese select your province:
+        <select id="province" size="1">
+            <option value="0">河南</option>
+            <option value="1">湖北</option>
+            <option value="2">湖南</option>
+        </select>
+        <br/>
+        please select your city:
+        <select id="city" size="1">
+        </select>
+        <br/>
+        your selection is:<span id="result"></span>
+    </body>
+</html>

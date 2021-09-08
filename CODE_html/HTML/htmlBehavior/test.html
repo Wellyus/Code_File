@@ -5,21 +5,21 @@
         <title></title>
         <script>
             window.onload = function(){
-                let texts = document.getElementsByName("text");
-                texts[texts.length-1].onchange = function(){
-                    let text = document.getElementsByName("text");
-                    for(let i=0; i<=text.length-2; i++) {
-                        text[i].value = text[text.length-1].value;
-                    }
+                let city = document.getElementById(`city`);
+                for(let i = 2; i <= 4; i++) {
+                    city[i] = new Option(i,i*i);
+                    //document.write(`${city[i].value}`);
+                }
+                city.onchange = ()=>{
+                    document.write(`${city.innerHTML}`);
                 }
             }
         </script>
     </head>
     <body>
-        <form name="form1" onsubmit="return foo();">
-            <input type="text" value="default" name="text"><br/>
-            <input type="text" name="text"><br/>
-            <input type="text" name="text"><br/>
-        </form>
+        <select id="city" size="1">
+            <option value="567">first line</option>
+            <option value="234">second line</option>
+        </select>
     </body>
 </html>
