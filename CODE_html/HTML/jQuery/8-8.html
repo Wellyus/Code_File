@@ -1,0 +1,70 @@
+//过滤器
+//$("div:not(".one").css({"background":"red"},);    除去One类元素
+//$("div":odd).css("background","red");             选中基数索引元素
+//$("div":even).css("background","red");            选中偶数索引元素
+//$("div":eq(3)).css()      index = 3;
+//$("div":lt(3)).css()      index < 3;
+//$("div":gt(3)).css()      index > 3;
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>内容过滤去</title>
+        <script src="../.../../../../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(document).ready(()=>{
+                $("#btn").click(()=>{
+                    $("div:contains(ij)").css("background","red");      //contains(abc),包含abc文本元素
+                    $("div:empty()").css("background","black");         //当前元素为空元素
+                    $("div:has(a)").css("background","orange");         //当前元素包含特定子元素
+                    //$("div:parent()").css("width","400px");           //当前元素不为空
+                })
+                $("#b1").click(()=>{
+                    $("div:visible").css({"width":"400px","background":"pink"});
+                })
+                $("#b2").click(()=>{
+                    //选中不可见元素，show方法可以让其显现
+                    $("div:hidden").show(1000);
+                })
+                $("#b3").click(()=>{
+                    $("a[title*=t1]").css("color","red");
+                    $("a[title=t2][id=t2]").css("color","pink");
+
+                })
+                $("#b4").click(()=>{
+                    //子元素过滤器，选择索引为3n+1的子元素
+                    $("div:nth-child(3n+1)").css("backgroundColor","yellow");
+                })
+            })
+        </script>
+        <style>
+            div{
+                width:300px;
+                height:30px;
+                margin:20px;
+                background-color:aqua;
+                border: 2px black solid;
+            }
+        </style>
+    </head>
+    <body>
+        <div>hauij</div>
+        <div>jkldfjsl</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div><a href="http://www.baidu.com">百度</a></div>
+        <button id="btn">click me!</button>
+        <br/><br/>
+        <h3>可见性过滤器</h3>
+        <input type="button" value="改变可见元素div属性" id="b1">
+        <input type="button" value="显现不可见的元素"    id="b2">
+        <br/><div style="display:none;width:300px;height:30px">hidden before!</div>
+        <a href="#" title="t1">第一个包含title属性的a元素</a><br/>
+        <a href="#">第一个不包含title属性的元素</a><br/>
+        <a href="#" title="t2" id="t2">第二个包含title属性的元素</a><br>
+        <a href="#">第二个不包含title属性的元素</a><br/>
+        <button id="b3">属性过滤器</button>
+        <button id="b4">子元素过滤器</button>
+    </body>
+</html>

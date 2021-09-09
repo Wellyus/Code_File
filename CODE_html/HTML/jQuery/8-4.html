@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>class-seclector</title>
+        <script src="../../../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(document).ready( ()=>{
+                $("button").click( ()=>{
+                    //箭头函数不会改变this的绑定
+                    $(".myClass").each(function (index,element){
+                        $(this).html(index+"-"+$(this).text());
+                    } )
+                    //$("#ul2>li").addClass("yourClass");
+                    $("#ul2>li").css({"list-style":"none","background":"#c9c","width":"200px",})
+                } );
+            } );
+        </script>
+        <style>
+            .yourClass{
+                list-style: none;
+                background-color: #c9c;
+                width: 200px;
+                height: 20px;
+                text-align: center;
+                line-height:20px;
+                margin:5px;
+            }
+        </style>
+    </head>
+    <body>
+        <button>增加每个列表项的索引值</button>
+        <ul>
+            <li class="myClass">football</li>
+            <li class="myClass">badminton</li>
+            <li class="myClass">basketball</li>
+        </ul>
+        <ul id="ul2">
+            <li>football</li>
+            <li>Badminton</li>
+            <li>basketball</li>
+        </ul>
+    </body>
+</html>

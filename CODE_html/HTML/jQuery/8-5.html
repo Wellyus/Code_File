@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>#my+img</title>
+        <script src="../../../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(document).ready(()=>{
+                $("button").click(()=>{
+                    if($("#username").val()===``) {
+                        $("#username+span").html(`username cannot be empty`);
+                        $("#username+span").css({"visibility":"visible"});
+                    } else {
+                        $("#username+span").css({"visibility":"hidden"});
+                        //$("#username+span").html($("#username").val());
+                    }
+                })
+            })
+        </script>
+        <style> 
+            span{
+                display:inline;
+                background-color: red;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <label>Username</label><input type="text" name="username" id="username"><span></span><br/>
+        <button>test</button>
+    </body>
+</html>
