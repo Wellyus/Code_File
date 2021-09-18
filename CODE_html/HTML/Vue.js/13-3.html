@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>插值表达式</title>
+        <script src="vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!--字符串-->
+            <p>
+                {{str}}
+                {{num+'aaa'}}
+                {{str.length}}
+                {{str.split("ll").reverse().join("aa")}}
+            </p>
+            <!--数值-->
+            <p>
+                {{num}}
+                {{num+num1}}
+                {{num>num1}}
+                {{num.toFixed(2)}}
+            </p>
+            <!---boolean-->
+            <p>
+                {{flag}}
+            </p>
+            <!--数组-->
+            <p>
+                {{arr[3]}}
+                {{arr}}
+            </p>
+            <!--对象-->
+            <p>
+                {{obj.name}}
+                {{obj.age}}
+            </p>
+            <!--三目运算符-->
+            <p>
+                {{num>num1?"yes":"no"}}
+            </p>
+            <span v-html="link"></span>
+        </div>
+        <script>
+            new Vue({
+                el:"#app",
+                data:{
+                    str:"hello",
+                    num:1,
+                    num1:100,
+                    flag:true,
+                    arr:[1,2,3,4],
+                    obj:{
+                        name:"robin",
+                        age:78,
+                    },
+                    link:`<a href="http://www.baidu.com">百度</a>`,
+                },
+            })
+        </script>
+    </body>
+</html>

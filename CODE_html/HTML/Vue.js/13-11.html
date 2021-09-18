@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>v-on</title>
+        <script src="vue.min.js"></script>
+    </head>
+    <body>
+        <div id="disp">
+            <p v-if="seen">Hello Vue事件</p>
+            <!--v-on:后面要紧跟事件和方法 -->
+            <!--v-on可以添加按键修饰符-->
+            <button v-on:keyup.enter="check">显示与隐藏</button>
+            <button v-on:click.stop="say(`hi`)">say("hi")</button>
+            <button v-on:click="say(`goodbye`)">say("goodbye")</button>
+            <div v-on:click.self="say(`do it!`)">
+                <span>line one</span><br/>
+                <span>line two</span>
+            </div>
+        </div>
+        <script>
+            let a = new Vue({
+                el:"#disp",
+                data:{seen:true,},
+                methods:{
+                    check:function(){
+                        this.seen = !this.seen;
+                    },
+                    say:function(message) {
+                        alert(message);
+                    },
+                }
+            })
+        </script>
+    </body>
+</html>

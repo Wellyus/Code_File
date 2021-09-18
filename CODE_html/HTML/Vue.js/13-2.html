@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>数据绑定-文本插值</title>
+        <script src="vue.min.js"></script>
+    </head>
+    <body>
+        <div id="test">
+            <p>{{msg}}</p>
+        </div>
+        <script>
+            let vm = new Vue({
+                el:"#test",
+                data:{
+                    msg:new Date(),
+                },
+                mounted: function(){
+                    let vm = this;
+                    this.timer = setInterval(()=>{
+                    vm.msg = new Date();
+                    },1000);
+                },
+                beforeDestroy: function(){
+                    if(this.timer) {
+                        clearInterval(this.timer);
+                    }
+                },
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>v-model</title>
+        <script src="vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            用户名:
+            <input v-model="test">{{test}}<br/>
+            前端语言:
+            <select v-model="selected">
+                <option value="HTMLL">HTML</option>
+                <option value="CSSS">CSS</option>
+                <option value="JavaScriptt">JavaScript</option>
+            </select>
+            你的选择是:{{selected}}<br/>
+            性别:<input type="radio" id="boy" value="男" v-model="picked">
+            <label for="boy">男</label>
+            <input type="radio" id="girl" value="女" v-model="picked">
+            <label for="girl">女</label>
+            选择是:{{picked}}<br/>
+            爱好:
+            <input type="checkbox" value="music" id="one" v-model="checkedNames">
+            <label for="one">music</label>
+            <input type="checkbox" value="ping-pong" id="two" v-model="checkedNames">
+            <label for="two">ping-pong</label>
+            <input type="checkbox" value="football" id="three" v-model="checkedNames">
+            <label for="three">football</label><br/>
+            选择是:{{checkedNames.join(',')}}
+            <script>
+                new Vue({
+                    el:"#app",
+                    data:{
+                        //v-model对表单元素input和textarea双向绑定
+                        //对表单元素进行实时监听，并把值返回给test，把test赋給该元素的value
+                        test:"1b",
+                        selected:"JavaScriptt",
+                        picked:"女",
+                        checkedNames:["music"],
+                    }
+                })
+            </script>
+        </div>
+    </body>
+</html>

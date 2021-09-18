@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>v-html&v-text</title>
+        <script src="vue.min.js"></script>
+    </head>
+    <body> 
+        <!--view-->
+        <div id="app">
+            <!--{{}}和v-text对文本进行原样输出-->
+            <p>{{hello}}</p>
+            <p v-text = "hello"></p>        
+            <p v-html = "hello"></p>        <!--解析HTML元素后输出-->
+            <image v-bind:src="image"></image>  <!--绑定属性-->
+            <p v-if = "seen">seen为真，显示</p>
+            <p v-else>seen为假，不显示</p>
+            <template v-if="ok">
+                <h1>Vue</h1>
+                <p>有条件渲染</p>
+            </template>
+        </div>
+        <script>
+            //viewModel
+            new Vue({
+                el:'#app',
+                //Model
+                data:{
+                    hello:'<span style="font-size:36px;color:red;">hello vue world</span>',
+                    image:"../../image/0.jfif",
+                    seen:false,        //条件渲染，是否显示该元素
+                    ok:false,           //v-show改变的是CSS中的display属性
+                },
+            })
+        </script>
+    </body>
+</html>

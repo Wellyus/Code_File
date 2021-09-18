@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>v-for</title>
+        <script src="vue.min.js"></script>
+    </head>
+    <body>
+        <!--view-->
+        <div id="disp">
+            <table border="2px" width="400px" height="300px" align="center">
+                <caption><h2>学生信息表</h2></caption>
+                <tr>
+                    <th>学号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                </tr>
+                <tr v-for="(item) in objList">
+                    <td>{{item.num}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.age}}</td>
+                </tr>
+            </table>
+            <span v-for="(value,key) in obj">
+                键:{{key}},值:{{value}}<br/>
+            </span>
+        </div>
+        <!--viewModel-->
+        <script>
+            new Vue({
+                el:"#disp",
+                //Model
+                data:{
+                    objList:[{num:1,name:"刘冰",age:25},{num:2,name:"汪琼",age:18},{num:3,name:"张三",age:22},{num:4,name:"李四",age:20},{num:5,name:"王二",age:19}],
+                    obj:{"C语言程序设计":90,"离散数学":86,"大学物理":89},
+                },
+
+            })
+        </script>
+    </body>
+</html>

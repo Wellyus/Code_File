@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>computed</title>
+        <script src="vue.min.js"></script>
+    </head>
+    <body>
+        <div id="disp">
+            <table border="2px" width="50%" height="400px" align="center">
+                <caption><h2>购物车</h2></caption>
+                <tr>
+                    <th>货名</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>合计</th>
+                </tr>
+                <tr v-for="item in objList">
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.count}}</td>
+                    <td>{{item.price*item.count}}</td>
+                </tr>
+                <tr>
+                    <td>总价</td>
+                    <td colspan="3">{{prices}}</td>
+                </tr>
+            </table>
+            长度:<input type="text" v-model="length"><br/>
+            宽度:<input type="text" v-model="width"><br/>
+            面积:{{area}}<br/>
+            <button v-on:click="click()">计算方法</button>和的值为:{{sum}}<br/>
+            <span>姓名:{{name}}</span>
+        </div>
+        <script>
+            //viewModel
+            let vue1 = new Vue({
+                el:"#disp",
+                data:{
+                    objList:[{name:"Huawei",price:4566,count:2},{name:"Honor",price:"4166",count:5},
+                    {name:"iPhone",price:8999,count:1},{name:"OPPO",price:"3344",count:9}],
+                    length:"",
+                    width:"",
+                    sum:0,
+                    firstName:"Wellyus",
+                    lastName:"Maxwell",
+                },
+                methods:{
+                    click:function() {
+                        this.sum = parseInt(this.length)+parseInt(this.width);
+                    }
+                },
+                //计算属性是对vue实例中数据对象的操作,封装成函数
+                computed:{
+                    prices:function() {
+                        let price = 0;
+                        for(let i = 0; i < this.objList.length; i++) {
+                            price+=this.objList[i].price*this.objList[i].count;
+                        }
+                        return price;
+                    },      
+                    area:function() {
+                        return parseInt(this.length)*parseInt(this.width);
+                    },
+                    name:{
+                        get:function() {
+                            return this.firstName+" "+this.lastName;
+                        },
+                        set:function(newName) {
+                            let name = newName.split(" ");
+                            this.firstName = name[0];
+                            this.lastName = name[1];
+                        },
+                    }
+                },
+            })
+            setter.name = "A B";
+        </script>
+    </body>
+</html>
