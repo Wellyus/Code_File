@@ -6,14 +6,17 @@
         <script src="Vue.min.js"></script>
     </head>
     <body>
+        //View层
         <div id="test">
             <p>{{msg}}</p>
         </div>
+        //ViewModel层
         <script>
             var vm = new Vue({
-                el:'#test',
-                data:{
-                    msg:'Hello Vue World!'
+                el:'#test',     //表示vue实例控制的区域
+                //Model层
+                data:{      //data定义数据，methods定义方法
+                    msg:'Hello Vue World!'      //通过Vue指令，把数据渲染到页面上
                 }
             });
         </script>

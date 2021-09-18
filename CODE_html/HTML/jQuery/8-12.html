@@ -6,13 +6,13 @@
         <script src="../../../node_modules/jquery/dist/jquery.js"></script>
         <script>
             $(document).ready(()=>{
-                const color = [`red`,`yellow`,`blue`];
-                $("ul li").each(function(index){
-                    //this.attr("color",color[index]);        //?
+                const color = ["red","yellow","blue"];
+                $("li").each(function(index){
+                    $(this).prop("color",color[index]);   //?
+                    //console.log($(this).attr("color"));
                     //this.style.color = color[index];
-                    this.css("color","red");
+                    //this.css("color","red");
                 })
-                //$("ul li").css("color","red");
             })
         </script>
     </head>
