@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Test</title>
+        <script>
+            window.onload = ()=>{
+                let disp = document.getElementById("disp");
+                disp.innerHTML = "Display";
+                let li = document.getElementById("disp1")
+                li.outerHTML = "foot";
+            }
+        </script>
+    </head>
+    <body>
+        <div id="disp" style="width:300px;height:300px;background:yellow;">
+            display
+        </div>
+        <ul>
+            <li id="disp1">football</li>
+            <li>food</li>
+        </ul>
+    </body>
+</html>

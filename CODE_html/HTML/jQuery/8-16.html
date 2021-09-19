@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DOM-remove,parent</title>
+        <script src="../../../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(document).ready(()=>{
+                $("#selectAll").click(()=>{
+                    $("input[name=select]").prop("checked",true);
+                })
+                $("#cancle").click(()=>{
+                    $("input[name=select]").prop("checked",false);
+                })
+                $("#notSelect").click(()=>{
+                    //箭头函数不支持this对象
+                    $("input[name=select]").each(function(){
+                        $(this).prop("checked",!$(this).prop("checked"));
+                    })
+                })
+                $("#delete").click(()=>{
+                    //箭头函数不支持this对象
+                    $("input[name=select]").each(function(){
+                        if($(this).prop("checked")===true) {
+                            $(this).parent().parent().remove();
+                        }
+                    })
+                })
+            })
+        </script>
+        <style>
+            *{
+                padding:0px;
+                margin:0px;
+            }
+        </style>
+    </head>
+    <body>
+        <table id="table" border="2px" width="400px">
+            <caption align="center">收件箱</caption>
+            <tr>
+                <th>状态</th>
+                <th>发件人</th>
+                <th>主题</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="select" checked></td>
+                <td>王者归来</td>
+                <td>羽毛球比赛</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="select"></td>
+                <td>天下</td>
+                <td>天气</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="select"></td>
+                <td>比赛</td>
+                <td>篮球</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="select" checked></td>
+                <td>阅读</td>
+                <td>百年孤独</td>
+            </tr>
+        </table>
+        <button id="selectAll">全选</button>
+        <button id="cancle">取消</button>
+        <button id="notSelect">反选</button>
+        <button id="delete">删除</button>
+    </body>
+</html>

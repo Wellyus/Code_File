@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>事件处理</title>
+        <style>
+            #disp{
+                background-color: yellow;
+                width:100px;
+                height: 100px;
+                left:0px;
+                top:200px;
+                position: absolute;
+            }
+        </style>
+        <script src="../../../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(document).ready(()=>{
+                //对第一个button元素绑定单击事件的方法
+                //slideToggle()滑动切换
+                $("button:eq(0)").bind("click",()=>{
+                    $("p").slideToggle();
+                })
+                //为document对象绑定右击事件,返回false表示不执行事件
+                $(document).bind("contextmenu",()=>{
+                    //return false;
+                })
+                let index = 0;
+                const num = [13,14,15,16];
+                //为子元素绑定事件的方法
+                $("ul").delegate("li","click",function(){
+                    $(this).append("<li>"+num[index]+"</li>");
+                    index++;
+                    index%=4;
+                })
+                $("button:eq(2)").click(()=>{
+                    console.log($("button:eq(2)").offset().left);
+                    console.log($("button:eq(2)").offset().top);
+                    $("#disp").mousedown(()=>{
+                        let offset = $("#disp").offset();       //获取div相对于文档的偏移位置
+                        let x1 = event.clientX - offset.left;   //获取鼠标指针相对于文档的位置
+                        let y1 = event.clientY - offset.top;    //获取鼠标指针相对于文档的位置
+                        $("#disp").mousemove(()=>{
+                            $("#disp").css("left",event.clientX-x1+"px");
+                            $("#disp").css("top",event.clientY-y1+"px");
+                        })
+                        $("#disp").mouseup(()=>{
+                            $("#disp").unbind("mousemove");
+                        })
+                    })
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <p>这是一段文字</p>
+        <button>事件处理</button>
+        <ul>
+            <li>12
+                <li>13</li>
+            </li>
+        </ul>
+        <button>事件处理-delegate</button>
+        <div id="disp"></div>
+        <button>事件方法</button>
+    </body>
+</html>

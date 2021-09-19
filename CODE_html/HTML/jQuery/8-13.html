@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>内容,属性</title>
+        <script src="../../../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(document).ready(()=>{
+                $("button").click(()=>{
+                    $("li:first").text($("#text").val());
+                    $("li:last").html($("#text"));
+                })
+                $("button:eq(1)").click(()=>{
+                    let index = 0;
+                    const imgChange = ()=>{
+                        index++;
+                        index %= 4;
+                        $("img").attr("src","../../image/"+index+".jfif");
+                    }
+                    setInterval(imgChange,1000);
+                })
+                $("button:eq(2)").click(()=>{
+                    $("p:eq(0)").before(`A`);       //之前插
+                    $("p:eq(2)").after(`B`);        //之后插
+                    $("p:eq(1)").replaceWith(`C`);  //替换
+                    $("p:eq(0)").empty();           //删除子元素
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <input type="text" value="乒乓球" id="text"><button>修改元素内容</button><br/>
+        <ul>
+            <li>music</li>
+            <li>badminton</li>
+            <li>football</li>
+            <li>basketball</li>
+        </ul>
+        <button>修改属性内容</button>
+        <div id="picture" style="width:300px;height:300px">
+            <img src="../../image/0.jfif">
+        </div>
+        <button>DOM操作</button><br/>
+        <p>fist paragraph</p>
+        <p>second paragraph</p>
+        <p>third paragraph</p>
+        <p>fourth paragraph</p>
+    </body>
+</html>
