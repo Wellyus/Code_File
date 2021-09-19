@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>购物车</title>
+        <script src="vue.min.js"></script>
+    </head>
+    <body>
+        <div id="disp" >
+            <table width="100%" height="400px" border="2px" v-if="objList.length">
+                <tr>
+                    <th></th>
+                    <th>名称</th> 
+                    <th>价格</th>
+                    <th>数量</th>
+                    <th>操作</th>
+                </tr>
+                <tr v-for="(item,index) in objList">
+                    <td>{{item.index}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price | addLetter() | toFixed()}}</td>
+                    <td>
+                        <!--为事件添加方法时加括号和参数-->
+                        <button v-on:click="deleteData(index)">-</button>
+                        {{item.num}}
+                        <button v-on:click="add(index)">+</button>
+                    </td>
+                    <td>
+                        <button v-on:click="remove(index)">移除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>总价</td>
+                    <td colspan=4><h2>{{allPrice | addLetter() | toFixed()}}</h2></td>
+                </tr>
+            </table>
+            <h2 v-else="objList.length">购物车为空！</h2>
+        </div>
+        <script>
+            //viewModel
+            let vue = new Vue({
+                el:"#disp",
+                data:{
+                    objList:[{index:1,name:"华为mate20pro",price:4566,num:1},{index:2,name:"华为P30",price:4166,num:2},
+                {index:3,name:"苹果X",price:5200,num:1},{index:4,name:"OPPO",price:2180,num:3}],
+                },
+                //定义方法，添加事件处理
+                methods:{
+                    //操作数据，这里需要确定在数组中的索引
+                    add:function(index) {
+                        //item.num++;
+                        this.objList[index].num++;
+                    },
+                    //delete为Vue的关键字
+                    deleteData:function(index) {
+                        if(this.objList[index].num>=1){
+                            this.objList[index].num--;
+                        }
+                    },
+                    remove:function(index) {
+                        this.objList.splice(index,1);
+                        for(let i = 0; i < this.objList.length; i++) {
+                            this.objList[i].index = i+1;
+                        }
+                    },
+                },
+                //定义计算属性，把allPrice与其他数量价格进行关联,计算属性单独命名一个函数,不需与数据中的成员相绑定
+                computed:{
+                    allPrice:function() {
+                        let sum = 0;
+                        for(let i = 0; i < this.objList.length; i++) {
+                            sum+=this.objList[i].num*this.objList[i].price;
+                        }
+                        return sum;
+                    }
+                },
+                //定义过滤器，对价格进行文本修饰
+                filters:{
+                    addLetter:function(value) {
+                        return "￥ " + value;
+                    },
+                    toFixed:function(value) {
+                        return value.slice(0,2) + parseInt(value.slice(2)).toFixed(2);
+                    },
+                }
+            })
+        </script>
+    </body>
+</html>

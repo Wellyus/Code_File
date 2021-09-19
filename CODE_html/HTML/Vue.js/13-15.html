@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>function:filter,data | filter()</title>
+        <script src="vue.min.js"></script>
+    </head>
+    <body>
+        <div id="disp">
+            <input type="text" v-model = "text"><br/>
+            <span><h2>{{text | changeCapitalLetter()}}</h2></span><br/>
+            <span><h2>{{code}}</h2></span><br/>
+            改变前的值为:{{tip1}},改变后的值为:{{tip2}}
+        </div>
+        <div id="disp2">
+            <span><h2>{{2 | number()}}</h2></span><br/>
+            <span><h2>{{12 | number()}}</h2></span><br/>
+            <span><h2>{{3 | numberFormat(5)}}</h2></span><br/>
+            <span><h2>{{4.5 | numberFormat()}}</h2></span>
+        </div>
+        <script>
+            //全局过滤器在创建Vue实例之前定义，可以作用于之后所有的Vue实例
+            Vue.filter("number",function(number) {
+                return number<10?"0"+number:number;
+            })
+            Vue.filter("numberFormat",function(number,base = 10) {
+                return number.toFixed(base);
+            })
+            let vue2 = new Vue({
+                el:"#disp2",
+            });
+            let vue = new Vue({
+                el:"#disp",
+                data:{
+                    text:"",
+                    tip1:"",
+                    tip2:"",
+                    code:"A",
+                },
+                filters:{
+                    //定义过滤器函数,用于文本处理
+                    changeCapitalLetter:function(text) {
+                        if(text) {
+                            const strs = text.split(" ");
+                            for(let i = 0; i < strs.length; i++) {
+                                //字符串为基本类型
+                                let letter = strs[i][0].toUpperCase();
+                                strs[i] = letter+strs[i].slice(1);
+                            }
+                            return strs.join(" ");
+                        }
+                    },
+                },
+                //监听属性,数据改变时自动调用该函数
+                watch:{
+                    text:function(newVal,oldVal) {
+                        this.tip2 = newVal;
+                        this.tip1 = oldVal;
+                        this.code = String.fromCharCode(parseInt(newVal)%26+65);
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>
