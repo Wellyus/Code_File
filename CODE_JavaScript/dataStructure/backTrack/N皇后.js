@@ -1,5 +1,6 @@
 //param:n
 //return [["",...""],["",...""]]所有解决方案  Q代表皇后，.代表空位
+/*
 function solveQueens(n) {
     //已选择的路径
     const track = "";
@@ -10,8 +11,7 @@ function solveQueens(n) {
         //[.............]
         //[....(i,j)....]
         //[.............] 
-        let i = (track.length-1)/n;
-        let j = (track.length-1)%n;
+        
         //判断竖行
         for(let k = i-1; k >=0; k--) {
             if(track[k*n+j]===choice) {
@@ -69,3 +69,54 @@ function solveQueens(n) {
 }
 const arr = solveQueens(2);
 console.log(arr);
+*/
+function solveQueens(n) {
+    const res = new Array(n);
+    for(let i = 0; i < n; i++) {
+        res[i] = new Array(n);
+        res[i].fill(".");
+    }
+    const result = [];
+    function isValid(row,col) {
+        //row,col分别代表皇后的行号和列号
+        //检查列
+        for(let j = row-1; j >= 0; j--) {
+            if(res[j][col]==="Q") {
+                return false;
+            }
+        }
+        //检查\
+        for(let i = row-1,j=col-1;i>=0&&j>=0;i--,j--) {
+            if(res[i][j]==="Q") {
+                return false;
+            }
+        }
+        //检查/
+        for(let i = row-1,j=col+1;i>=0&&j<n;i--,j++) {
+            if(res[i][j]==="Q") {
+                return false;
+            }
+        }
+        return true;
+    }
+    function solve(row) {
+        if(row===n) {
+            let arr = [];
+            for(let i = 0; i < n; i++) {
+                arr.push(res[i].join(""));
+            }
+            result.push([...arr]);
+            return ;
+        }
+        for(let col = 0; col < n; col++) {
+            if(isValid(row,col)===true) {
+                res[row][col] = "Q";
+                solve(row+1);
+                res[row][col] = ".";
+            }
+        }
+    }   
+    solve(0);
+    return result;
+}
+console.log(solveQueens(8));
