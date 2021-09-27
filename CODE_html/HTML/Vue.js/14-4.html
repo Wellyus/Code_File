@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue.component,data</title>
+        <script src="vue.min.js"></script>
+    </head>
+    <body>
+        <div id="main">
+            <my-div></my-div><hr>
+            <my-div></my-div><hr>
+            <my-div1></my-div1>
+        </div>
+
+        <template id="template1">
+            <div>
+                <input type="text" value="button" v-on:click="increment()">
+                <h2>{{count}}</h2>
+                <span>{{count1}}</span>
+            </div>
+        </template>
+
+        <script>
+            let vue1 = new Vue({
+                el:"#main",
+                components:{
+                    "myDiv":{
+                        template:"#template1",
+                        data:function() {
+                            return {
+                                count:0,
+                                count1:1,
+                            };
+                        },
+                        methods:{
+                            increment() {
+                                this.count++;
+                                this.count1--;
+                            }
+                        }
+                    },
+                    "myDiv1":{
+                        template:"#template1",
+                        data:function() {
+                            return {count:0,count1:1};
+                        },
+                        methods:{
+                            increment() {
+                                this.count++;
+                                this.count1++;
+                            }
+                        },
+                    },
+                },
+                data:{
+
+                },
+                methods:{
+
+                },
+            });
+        </script>
+    </body>
+</html>

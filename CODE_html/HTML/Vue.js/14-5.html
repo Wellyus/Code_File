@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>组件切换</title>
+        <script src="vue.min.js"></script>
+    </head>
+    <body>
+        <div id="main">
+            选择需要切换的组件:
+            <input type="radio" value="div1" name="change" checked v-model="tab">1号
+            <input type="radio" value="div2" name="change" v-model="tab">2号<br/>
+            <!--占位符，渲染一个待显示的组件-->
+            <component v-bind:is="tab"></component>
+        </div>
+
+        <template id="temp1">
+            <div>
+                <button v-on:click="alert()">click me!</button>{{data1}}
+            </div>
+        </template>
+        <template id="temp2">
+            <div>
+                <button v-on:click="alert()">click me!</button>{{data2}}
+            </div>
+        </template>
+        <script>
+            Vue.component("div1",{
+                template:"#temp1",
+                data() {
+                    return {data1:0};
+                },
+                methods:{
+                    alert() {
+                        window.alert("operate successfully!");
+                        this.data1++;
+                    },
+                },
+            });
+            Vue.component("div2",{
+                template:"#temp2",
+                data() {
+                    return {data2:0};
+                },
+                methods:{
+                    alert() {
+                        window.alert("operate successfully!");
+                        this.data2++;
+                    },
+                }
+            })
+            let vue1 = new Vue({
+                el:"#main",
+                data:{
+                    tab:"div1",
+                },
+                methods:{
+
+                },
+            })
+        </script>
+    </body>
+</html>

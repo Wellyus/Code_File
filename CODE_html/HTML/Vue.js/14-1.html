@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue.extend,Vue.component</title>
+        <script src="vue.min.js"></script>
+    </head>
+    <body>
+        <!--vue1-->
+        <div id="main">
+            <my-div></my-div>
+            <my-div></my-div>
+            <my-div></my-div>
+            <div>
+                <my-div1></my-div1>
+            </div>
+        </div>
+        <!--vue2-->
+        <div id="second">
+            <my-div2></my-div2>
+        </div>
+        <!--定义组件模板-->
+        <template id="div1">
+            <h2>template&&template</h2>
+        </template>
+        <!--viewModel-->
+        <script>
+            //创建组建模板,模板中只能有一个根元素
+            let child = Vue.extend({
+                template:"<div><h2>Vue.extend&&Vue.component</h2></div>",
+            })
+            //创建组件,驼峰命名法要转换为小写字母,创建的为全局组件，以下的vue实例都可以使用
+            Vue.component("myDiv",child);
+            //模板与组件分离
+            Vue.component("myDiv1",{template:"#div1"});
+            let main = new Vue({
+                el:"#main",
+                data:{
+
+                },
+            });
+            let second = new Vue({
+                el:"#second",
+                data:{
+
+                },
+                //创建的为私有组件,仅该vue实例可使用
+                components:{
+                    myDiv2:{template:"#div1"},
+                },
+            });
+        </script>
+    </body>
+</html>
