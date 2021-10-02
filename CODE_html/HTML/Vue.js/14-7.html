@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>组件传值</title>
+        <script src="vue.min.js"></script>
+    </head>
+    <body>
+        <div id="disp">
+            name:{{datamsgFromSon.name}}<br/>
+            age:{{datamsgFromSon.age}}<br/>
+            {{dataNumFromSon}}
+            <mycom v-on:func="show"></mycom>
+        </div>
+        <template id="temp1">
+            <div>
+                <h3>子组件</h3>
+                {{sonmsg.name}}{{sonmsg.age}}
+                <input type="button" value="组件传值" v-on:click="myclick">
+            </div>
+        </template>
+        <script>
+            Vue.component("mycom",{
+                template:"#temp1",
+                data() {
+                    return {
+                        sonmsg:{
+                            name:"1w",
+                            age:14,
+                        },
+                    }
+                },
+                methods:{
+                    myclick() {
+                        //调用父组件的function方法
+                        this.$emit("func",123,this.sonmsg);
+                    }
+                }
+            })
+            let vue1 = new Vue({
+                el:"#disp",
+                data:{
+                    dataNumFromSon:20,
+                    datamsgFromSon:{
+                        name:"wellyus",
+                        age:"20",
+                    }
+                },
+                methods:{
+                    show(data1,data2) {
+                        this.dataNumFromSon = data1;
+                        this.datamsgFromSon = data2;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

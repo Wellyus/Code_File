@@ -34,8 +34,8 @@
     return quick(arr,0,arr.length-1);
 }*/
 function quickSort(arr) {
-    if(arr.length===0) {
-        return [];
+    if(arr.length<=1) {
+        return arr;
     }
     let pivot = arr[0];
     const lesser = [];
@@ -49,7 +49,7 @@ function quickSort(arr) {
             //console.log(`基准值${pivot},当前值${arr[i]}右移`);
         }
     }
-    return quickSort(lesser).concat(pivot,quickSort(greater));
+    return quickSort(lesser).concat(pivot,[...quickSort(greater)]);
 }
 const arr = [];
 for(let i = 0; i < 10; i++) {

@@ -24,3 +24,4 @@ for(let [key,value] of map1) {
 map1.forEach((value,key)=>{
     console.log(key+""+value);
 })
+console.log(map1.size);     //map.size表示映射中键的数目

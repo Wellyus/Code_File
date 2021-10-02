@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>组件传值</title>
+        <script src="vue.min.js"></script>
+    </head>
+    <body>
+        <div id="disp">
+            {{msg}}
+            <mycom v-bind:parentmsg="msg"></mycom>
+        </div>
+        <template id="temp1">
+            <h3 v-on:click="change">子组件获取的父组件数据:
+                {{parentmsg}}---{{title}}---{{content}}
+            </h3>
+        </template>
+        <script>
+            Vue.component("mycom",{
+                template:"#temp1",
+                data() {
+                    return {title:"子组件标题",content:"子组件数据内容"};
+                },
+                methods:{
+                    change() {
+                        this.parentmsg = "子组件方法修改了值";
+                    }
+                },
+                props:["parentmsg"],
+            })
+            let vue1 = new Vue({
+                el:"#disp",
+                data:{
+                    msg:"(父组件的data数据)",
+                },
+                methods:{
+
+                },
+            })
+        </script>
+
+    </body>
+</html>
