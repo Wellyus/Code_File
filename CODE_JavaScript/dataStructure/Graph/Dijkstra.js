@@ -88,7 +88,6 @@ function Graph(v) {
                     index = j;
                 }
             }
-            console.log([...dist]);
             sum += min;
             visited[index] = true;
             for(let j = 0; j < this.vertice; j++) {
@@ -115,7 +114,7 @@ function Graph(v) {
         for(let i = 0; i < this.vertice; i++) {
             parent[i] = i;
         }
-        let isValid = (j,k)=>{
+        const isValid = (j,k)=>{
             while(parent[j]!==j) {
                 j = parent[j];
             }
@@ -132,18 +131,20 @@ function Graph(v) {
             let y = -1;
             for(let j = 0; j < this.vertice; j++) {
                 for(let k = 0; k < this.vertice; k++) {
-                    if(this.graph[j][k]<min&&graph1[j][k]===false) {
-                        if(isValid(j,k)) {
-                            min = this.graph[j][k];
-                            x = j;
-                            y = k;
-                        }
+                    if(this.graph[j][k]<min&&!graph1[j][k]&&isValid(j,k)) {
+                        min = this.graph[j][k];
+                        x = j;
+                        y = k;
                     }
                 }
             }
+            let m = x;
+            while(parent[m]!==m) {
+                m = parent[m];
+            }
+            parent[m] = y;
             console.log(`选择的第${i+1}条边为:${x}->${y} = ${this.graph[x][y]}`);
             graph1[x][y] = true;
-            parent[y] = x;
         }
     }
 }

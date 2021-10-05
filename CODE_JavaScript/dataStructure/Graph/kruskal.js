@@ -35,7 +35,11 @@ function kruskal(graph) {
                     }
                 }
             }
+            let m = x;
+            while(parent[m]!==m) {
+                m = parent[m];
+            }
+            parent[m] = y;
             console.log(`选择的第${i+1}条边为:${x}->${y} = ${this.graph[x][y]}`);
-            graph1[x][y] = true;
         }
 }
