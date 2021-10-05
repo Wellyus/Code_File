@@ -147,6 +147,25 @@ function Graph(v) {
             graph1[x][y] = true;
         }
     }
+    this.Floyd_Warshall = ()=>{
+        const dist = [];
+        for(let i = 0; i < this.vertice; i++) {
+            dist[i] = [];
+            for(let j = 0; j < this.vertice; j++) {
+                dist[i][j] = this.graph[i][j];
+            }
+        }
+        for(let k = 0; k < this.vertice; k++) {
+            for(let i = 0; i < this.vertice; i++) {
+                for(let j = 0; j < this.vertice; j++) {
+                    if(dist[i][k]+dist[k][j]<dist[i][j]) {
+                        dist[i][j] = dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
+        console.log([...dist]);
+    }
 }
 let graph1 = new Graph(6);
 {
@@ -165,3 +184,4 @@ graph1.showGraph();
 graph1.Dijkstra(0);
 graph1.prim();
 graph1.kruskal();
+graph1.Floyd_Warshall();
