@@ -12,6 +12,7 @@ function Graph(v) {
     for(let i = 0; i < this.vertices; i++) {
         this.adj[i] = [];
         this.marked[i] = false;
+        this.edgeTo[i] = -1;
     }
     this.addEdge = (v,w)=>{
         this.adj[v].push(w);
@@ -34,6 +35,8 @@ function Graph(v) {
         if(this.marked[v]===false) {
             console.log(v + " is visited");
             this.marked[v] = true;
+        } else {
+            return ;
         }
         if(this.adj[v][0] !== void 0) {
             for(let vertex of this.adj[v]) {
@@ -45,18 +48,21 @@ function Graph(v) {
     }
     //breadth first search
     this.bfs = (v)=>{
-        var queue = [];
+        const queue = [];
         queue.push(v);
         this.marked[v] = true;
         while(queue.length > 0) {
-            var d = queue.shift();
-            console.log(d+" is visited");
-            if(this.adj[d][0]!=void 0) {
-                for(let i of this.adj[d]) {
-                    if(this.marked[i]===false) {
-                        queue.push(i);
-                        this.marked[i] = true;
-                        this.edgeTo[i] = d;
+            let len = queue.length;
+            for(let i = 0; i < len; i++) {
+                let d = queue.shift();
+                console.log(d+" is visited!");
+                if(this.adj[d][0]!==void 0) {
+                    for(let j of this.adj[d]) {
+                        if(this.marked[j]===false) {
+                            queue.push(j);
+                            this.marked[j] = true;
+                            this.edgeTo[j] = d;
+                        }
                     }
                 }
             }
@@ -81,13 +87,12 @@ function Graph(v) {
     }
 }
 let graph = new Graph(8);
-graph.addEdge(0,2);
-graph.addEdge(2,1);
 graph.addEdge(0,1);
-graph.addEdge(3,4);
+graph.addEdge(0,6);
+graph.addEdge(2,1);
+graph.addEdge(3,1);
+graph.addEdge(2,5);
 graph.addEdge(2,4);
-graph.addEdge(1,4);
-graph.addEdge(0,3);
 graph.showGraph();
-graph.bfs(1);
-console.log(graph.pathTo(1,2));
+graph.bfs(0);
+console.log(graph.pathTo(0,4));
