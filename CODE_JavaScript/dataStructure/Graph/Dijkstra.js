@@ -37,9 +37,9 @@ function Graph(v) {
         dist[src] = 0;
         const visited = new Array(this.vertice);
         visited.fill(false);
-        const res = new Array(this.vertice);
-        res.fill(-1);
-        //再选n-1个最小距离即可
+        const parent = new Array(this.vertice);
+        parent.fill(-1);
+        //选n个最小距离
         for(let i= 0; i < this.vertice; i++) {
             let min = Infinity;
             let index = src;
@@ -55,16 +55,16 @@ function Graph(v) {
             for(let i = 0; i < len; i++) {
                 if(dist[index]+this.graph[index][i]<dist[i]&&this.graph[index][i]!==Infinity&&visited[i]===false) {
                     dist[i] = dist[index] + this.graph[index][i];
-                    res[i] = index;
+                    parent[i] = index;
                 }
             }
         }
         for(let i = 0; i < this.vertice; i++) {
             let str = ""+i;
             let j = i;
-            while(res[j]!==-1) {
-                str = res[j] + str;
-                j = res[j];
+            while(parent[j]!==-1) {
+                str = parent[j] + str;
+                j = parent[j];
             }
             console.log(str+" "+dist[i]);
         }
@@ -111,15 +111,13 @@ function Graph(v) {
             graph1[i].fill(false);
         }
         const parent = new Array(this.vertice);
-        for(let i = 0; i < this.vertice; i++) {
-            parent[i] = i;
-        }
+        parent.fill(-1);
         const isValid = (j,k)=>{
-            while(parent[j]!==j) {
+            while(parent[j]!==-1) {
                 j = parent[j];
             }
             let parent1 = j;
-            while(parent[k]!==k) {
+            while(parent[k]!==-1) {
                 k = parent[k];
             }
             let parent2 = k;
@@ -139,7 +137,7 @@ function Graph(v) {
                 }
             }
             let m = x;
-            while(parent[m]!==m) {
+            while(parent[m]!==-1) {
                 m = parent[m];
             }
             parent[m] = y;
@@ -166,6 +164,68 @@ function Graph(v) {
         }
         console.log([...dist]);
     }
+    //解决负权边
+    this.Bellman_Ford = ()=>{
+        const dist = new Array(this.vertice);
+        dist.fill(Infinity);
+        dist[0] = 0;
+        const u = [];
+        const v = [];
+        const w = [];
+        for(let i = 0; i < this.vertice; i++) {
+            for(let j = 0; j < this.vertice; j++) {
+                if(this.graph[i][j]!==0&&this.graph[i][j]!==Infinity) {
+                    u.push(i);
+                    v.push(j);
+                    w.push(this.graph[i][j]);
+                }
+            }
+        }
+        //m-1次边更新
+        for(let i = 0; i < this.vertice-1; i++) {
+            //更新到每条边出点的距离
+            for(let j = 0; j < u.length; j++) {
+                if(dist[u[j]]+w[j]<dist[v[j]]) {
+                    dist[v[j]] = dist[u[j]] + w[j];
+                }
+            }
+        }
+        let flag = 0;
+        for(let j = 0; j < u.length; j++) {
+            if(dist[u[j]]+w[j]<dist[v[j]]) {
+                flag = 1;
+            }
+        }
+        let str = flag===1?`该回路有负权值回路`:`该回路无负权值回路`;
+        console.log([...dist]);
+        console.log(str);
+    }
+    this.reBellman_Ford = ()=>{
+        const dist = new Array(this.vertice);
+        const book = new Array(this.vertice);
+        book.fill(false);
+        dist.fill(Infinity);
+        dist[0] = 0;
+        const res = [];
+        res.push(0);
+        while(res.length>0) {
+            let len = res.length;
+            for(let i = 0; i < len; i++) {
+                let cur = res.shift();
+                book[res] = false;
+                for(let j = 0; j < this.vertice; j++) {
+                    if(dist[cur]+this.graph[cur][j]<dist[j]) {
+                        dist[j] = this.graph[cur][j] + dist[cur];
+                        if(!book[j]) {
+                            res.push(j);
+                            book[j] = true;
+                        }
+                    }
+                }
+            }
+        }
+        console.log([...dist]);
+    }
 }
 let graph1 = new Graph(6);
 {
@@ -185,3 +245,5 @@ graph1.Dijkstra(0);
 graph1.prim();
 graph1.kruskal();
 graph1.Floyd_Warshall();
+graph1.Bellman_Ford();
+graph1.reBellman_Ford();
