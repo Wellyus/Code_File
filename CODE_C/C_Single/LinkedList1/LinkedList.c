@@ -14,7 +14,7 @@ int main()
     for(i=1;i<=n;i++)
     {
         scanf("%d",&a);
-        p = (struct node*)malloc(sizeof(struct node));
+        p = (struct node *)malloc(sizeof(struct node));
         p->data = a;
         p->next = NULL;
         if(head==NULL)
