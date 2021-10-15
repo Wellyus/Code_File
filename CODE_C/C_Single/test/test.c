@@ -1,10 +1,16 @@
 #include<stdio.h>
-#define Test
-int main(int argc,char * argv[]) {
-    #ifdef Test
-    for(int i = 0; i < argc; i++) {
-        printf("%s\n",argv[i]);
-    }
-    #endif
+#include"threads.h"
+void f() {
+	static int x = 0;
+	printf("Hello from thread #%d\n",x++);
+	while(1);
+}
+int main(void)
+{
+	for(int i = 0; i < 1000; i++) {
+		create(f);
+	}
+	join(NULL);
+    system("PAUSE");
     return 0;
 }

@@ -1,18 +1,70 @@
 #include<stdio.h>
 #include<stdlib.h>
-int main(int argc, char *argv[]) {
-    FILE *p;
-    p = fopen("test.c","w");
-    if(p == NULL) {
-        printf("file open error!");
-        exit(1);
+int main(void)
+{
+    double number1 = 0.0;
+	double number2 = 0.0;
+    double number3 = 1;
+    double sum = 0.0;
+	char operation;
+    char op;
+	printf("Enter the calculation:\n");
+    scanf("%lf%c%lf",&number1,&operation,&number2);
+    //1+2*3+4;
+    //1+2+3;
+    //1*2+3*4;
+    //1*2*3;
+    while(1) {
+        scanf("%c",&op);
+        if(op != '=') {
+            scanf("%lf",&number3);
+        }
+        switch(operation) {
+            case '+': 
+                if(op == '*') {
+                    number2 = number2 * number3;
+                } else if(op == '/') {
+                    number2 = number2 / number3;
+                } else if(op == '%') {
+                    number2 = (long)number2 % (long)number3;
+                } else {
+                    number1 = number1 + number2;
+                    operation = op;
+                    number2 = number3;
+                } break;
+            case '-':
+                if(op == '*') {
+                    number2 = number2 * number3;
+                } else if(op == '/') {
+                    number2 = number2 / number3;
+                } else if(op == '%') {
+                    number2 = (long)number2 % (long)number3;
+                } else {
+                    number1 = number1 - number2;
+                    operation = op;
+                    number2 = number3;
+                } break;
+            case '*' :
+                number1 = number1 * number2;
+                operation = op;
+                number2 = number3;
+                break;
+            case '/':
+                number1 = number1 / number2;
+                operation = op;
+                number2 = number3;
+                break;
+            case '%':
+                number1 = (long)number1 % (long)number2;
+                operation = op;
+                number2 = number3;
+                break;
+        }
+        if(op == '=') {
+            break;
+        }
     }
-    fputc('A',p);
-    fputs("BCDEFG",p);
-    char *d = "HIJKLMN";
-    int a = 1;
-    fprintf(p,"%s\n%d",d,a);
-    fclose(p);
+    printf("%lf",number1);
     system("PAUSE");
     return 0;
 }

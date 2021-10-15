@@ -1,17 +1,40 @@
 #include<stdio.h>
 #include<stdlib.h>
 int main(int argc, char *argv[]) {
-    FILE *p;
-    p = fopen("test.c","r");
-    if(p == NULL) {
-        printf("file open error!");
-        exit(1);
+    double number1 = 0.0;
+    double f = 0.1;
+    int i = 0;
+    char c;
+    char operation;
+    fflush(stdin);
+    while((c = getchar())!='=') {
+        /*if(c=='+'||c=='-'||c=='*'||c=='/'||c=='%') {
+            operation = c;
+            continue;
+        }
+        if(c=='.') {
+            for(int j = 0; j < i; j++) {
+                number1*=10;
+            }
+            f = 0.1;
+            i = 0;
+            continue;
+        }*/
+        //123.12+
+        if('0'<c<'9') {
+            number1 = number1 + (c - '0')*f;
+            f /= 10;
+            i++;
+        }
+        if(c=='.') {
+            for(int j = 0; j < i; j++) {
+                number1 *= 10;
+            }
+            f = 0.1;
+            i = 0;
+        }
     }
-    rewind(p);
-    fseek(p,0,2);
-    int a = ftell(p);
-    printf("%d\n",a);
-    fclose(p);
+    printf("%lf",number1);
     system("PAUSE");
     return 0;
 }
