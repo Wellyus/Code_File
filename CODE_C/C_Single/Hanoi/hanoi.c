@@ -15,8 +15,8 @@ struct frame {
     int pc, n;
     char from, to, via;
 };
-#define call(...) ({stk[top++] = (struct frame) { 0, __VA_ARGS__}; })
-#define ret()  ({top--; })
+#define call(...) {stk[top++] = (struct frame) { 0, __VA_ARGS__}; }
+#define ret()  {top--; }
 void hanoi(int n, char from, char to, char via) {
     //inital state: empty stack
     struct frame stk[64];
