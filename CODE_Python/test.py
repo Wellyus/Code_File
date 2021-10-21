@@ -1,13 +1,9 @@
-import fire
-
-
-def order_by_value(*items):
-    """
-    根据数字大小排序
-    """
-    sorted_items = sorted(items, key=lambda item: item)
-    print(sorted_items)
-
-
-if __name__ == "__main__":
-    fire.Fire(order_by_value)
+def http_error(status):
+	match status:
+		case 400:
+			return "Bad request"
+		case 404:
+			return "Not fount"
+		case _:
+			return "aa"
+print(http_error(400))
