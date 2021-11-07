@@ -1,40 +1,40 @@
-/*function quickSort(arr) {
-    //快速排序并返回索引
-    const partition = (arr,left,right)=>{
-        const middle = Math.floor((left+right)/2);
-        let i = left;
-        let j = right;
-        while(i<=j) {
-            while(arr[i]<arr[middle]) {
-                i++;
-            }
-            while(arr[j]>arr[middle]) {
-                j--;
-            }
-            if(i<=j) {
-                [arr[i],arr[j]] = [arr[j],arr[i]];
-                i++;
-                j--;
-            }
-        }
-        return i;
-    }
-    const quick = (arr,left,right)=>{
-        if(arr.length>1) {
-            let i = partition(arr,left,right);
-            if(left<i-1) {
-                quick(arr,left,i-1);
-            }
-            if(i<right) {
-                quick(arr,i,right);
-            }
-        }
-        return arr;
-    }
-    return quick(arr,0,arr.length-1);
-}*/
+function quickSort(arr, left, right) {
+	if (arr.length < 2) {
+		return arr;
+	}
+  let middle = Math.floor((left + right) / 2);
+	let l = left;
+	let r = right;
+	while(l <= r) {
+		while(arr[l] < arr[middle]) {
+			l++;
+		}
+		while(arr[r] > arr[middle]) {
+			r--;
+		}
+		if (l <= r) {
+			[arr[l], arr[r]] = [arr[r], arr[l]];
+			l++;
+			r--;
+		}
+	}
+	if (left < l-1) {
+		quickSort(arr, left, l-1);
+	}
+	if (l < right) {
+		quickSort(arr, l, right);
+	}
+	return arr;
+}
+const arr = [];
+for(let i = 0; i < 10; i++) {
+    arr.push(Math.floor(Math.random()*15));
+}
+console.log(arr);
+console.log(quickSort(arr, 0, arr.length-1));
+/*
 function quickSort(arr) {
-    if(arr.length<=1) {
+    if(arr.length < 2) {
         return arr;
     }
     let pivot = arr[0];
@@ -49,7 +49,7 @@ function quickSort(arr) {
             //console.log(`基准值${pivot},当前值${arr[i]}右移`);
         }
     }
-    return quickSort(lesser).concat(pivot,[...quickSort(greater)]);
+    return quickSort(lesser).concat(pivot,quickSort(greater));
 }
 const arr = [];
 for(let i = 0; i < 10; i++) {
@@ -57,3 +57,4 @@ for(let i = 0; i < 10; i++) {
 }
 console.log(arr);
 console.log(quickSort(arr));
+ */
