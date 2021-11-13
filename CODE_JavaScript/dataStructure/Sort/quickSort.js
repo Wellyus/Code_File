@@ -1,37 +1,28 @@
-function quickSort(arr, left, right) {
-	if (arr.length < 2) {
-		return arr;
+function quickSort(arr, left, right) {	
+	if (left > right) {
+		return;
 	}
-  let middle = Math.floor((left + right) / 2);
 	let l = left;
 	let r = right;
-	while(l <= r) {
-		while(arr[l] < arr[middle]) {
-			l++;
-		}
-		while(arr[r] > arr[middle]) {
+	let pivot = arr[left];
+	while (l < r) {
+		while (arr[r] >= pivot && l < r) {
 			r--;
 		}
-		if (l <= r) {
+		while (arr[l] <= pivot && l < r) {
+			l++;
+		}
+		if (l < r) {
 			[arr[l], arr[r]] = [arr[r], arr[l]];
-			l++;
-			r--;
 		}
 	}
-	if (left < l-1) {
-		quickSort(arr, left, l-1);
-	}
-	if (l < right) {
-		quickSort(arr, l, right);
-	}
-	return arr;
+	[arr[left], arr[l]] = [arr[l], arr[left]];
+	quickSort(arr, left, l-1);
+	quickSort(arr, l+1, right);
 }
-const arr = [];
-for(let i = 0; i < 10; i++) {
-    arr.push(Math.floor(Math.random()*15));
-}
+const arr = [6,1,14,2,7,9,3,4,5,11,15,13,12,10,8];
+quickSort(arr, 0, arr.length-1);
 console.log(arr);
-console.log(quickSort(arr, 0, arr.length-1));
 /*
 function quickSort(arr) {
     if(arr.length < 2) {
@@ -51,10 +42,9 @@ function quickSort(arr) {
     }
     return quickSort(lesser).concat(pivot,quickSort(greater));
 }
-const arr = [];
-for(let i = 0; i < 10; i++) {
-    arr.push(Math.floor(Math.random()*15));
-}
+if (left > right) {
+		
+	}
 console.log(arr);
 console.log(quickSort(arr));
  */
