@@ -11,16 +11,18 @@ var combinationSum2 = function(candidates, target) {
     for (let i = 0; i < candidates.length; i++) {
         candidates_[i] = candidates[i];
     }
-    quickSort(candidates_,0 , candidates_.length);
+    quickSort(candidates_,0 , candidates_.length-1);
+    console.log([...candidates_]);
     function solve(left, target) {
         if (target === 0) {
             result.push([...path]);
-        }
-        if (target < 0) {
-          return;
+            return;
         }
         for (let i = left; i < candidates_.length; i++) {
             if (i === left) {
+                if (target < candidates_[i]) {
+                    return;
+                }
                 path.push(candidates_[i]);
                 solve(i+1, target-candidates_[i]);
                 path.pop();
@@ -55,4 +57,7 @@ var combinationSum2 = function(candidates, target) {
     }
     solve(0, target);
     return result;
-  };
+}
+const arr = [32,33,5,32,12,7,17,33,29,13,18,16,23,28,26,26,12,6,23,19,22,12,9,6,5,34,22,27,11,33,27,30,24,27,27,31,29,32,21,24,32,5,27,21,20,10,12,28,11,31,12,20,30,17,21,30,8,8];
+const target = 27;
+console.log(combinationSum2(arr, target));
