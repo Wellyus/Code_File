@@ -22,8 +22,8 @@ int main() {
 		switch(choice) {
 			case 1: add(); save();    break;
 			case 2: out(); save();    break;
-			case 3: modify();save();	break;
-			case 4: del();save();			break;
+			case 3: modify(); save();	break;
+			case 4: del(); save();		break;
 			case 5: show(); 					break;
 			case 6: search();					break;
 			case 7: jifei();					break;
