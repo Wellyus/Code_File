@@ -52,22 +52,22 @@ function coinChange(coins,amount) {
 ***
 * 带备忘录的迭代写法:
 ```JavaScript{.line-numbers, highlight=12} 
-function coinChange(coins,amount) {
+function coinChange (coins,amount) {
     //dp数组记录已经计算的钱数
-    var dp = new Array(amount+1); 
-    dp.fill(amount+1);
+    var dp = new Array(amount + 1); 
+    dp.fill(amount + 1);
     dp[0] = 0;
-    for(let i = 1; i <= amount; i++) {
-        for(let coin of coins) {
-            if(i-coin < 0) {
+    for (let i = 1; i <= amount; i++) {
+        for (let coin of coins) {
+            if (i - coin < 0) {
                 continue;
             } else {
                 //找到上一个子问题的最小值
-                dp[i] = Math.min(dp[i-coin]+1,dp[i]);
+                dp[i] = Math.min(dp[i-coin]+1, dp[i]);
             }
         }
     }
-    return dp[amount]===amount+1?-1:dp[amount];
+    return dp[amount] === amount + 1 ? -1 : dp[amount];
 }
 ```
 ***
