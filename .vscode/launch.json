@@ -5,6 +5,12 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Go: 当前文件",
+      "type": "go",
+      "request": "launch",
+      "program": "${file}"
+    },
+    {
       "name": "Python: 当前文件",
       "type": "python",
       "request": "launch",
