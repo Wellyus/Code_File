@@ -1,28 +1,33 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+	"time"
+)
 
-func main() {
-	c := make(chan int)
-	quit := make(chan int)
-	go func() {
-		for i := 0; i < 10; i++ {
-			fmt.Println(<-c)
-		}
-		quit <- 0
-	}()
-	fibonacci(c, quit)
+type SafeCounter struct {
+	v   map[string]int
+	mux sync.Mutex
 }
 
-func fibonacci(c, quit chan int) {
-	x, y := 0, 1
-	for {
-		select {
-		case c <- x:
-			x, y = y, x+y
-		case <-quit:
-			fmt.Println("quit")
-			return
-		}
+func (c *SafeCounter) Inc(key string) {
+	c.mux.Lock()
+	c.v[key]++
+	c.mux.Unlock()
+}
+
+func (c *SafeCounter) Value(key string) int {
+	c.mux.Lock()
+	defer c.mux.Unlock()
+	return c.v[key]
+}
+
+func main() {
+	c := SafeCounter{v: make(map[string]int)}
+	for i := 0; i < 10000; i++ {
+		go c.Inc("somekey")
 	}
+	time.Sleep(time.Second)
+	fmt.Println(c.Value("somekey"))
 }
