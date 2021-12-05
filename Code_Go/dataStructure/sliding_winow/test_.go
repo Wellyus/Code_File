@@ -17,13 +17,16 @@ func findAnagrams(s string, p string) (result []int) {
 	arr := [26]int{}
 	diff := 0
 	for index, value := range p {
-		arr[s[index]-'a']--
-		arr[value-'a']++
+		arr[s[index]-'a']++
+		arr[value-'a']--
 	}
-	for _, value := range p {
+	for _, value := range arr {
 		if value != 0 {
 			diff++
 		}
+	}
+	if diff == 0 {
+		result = append(result, 0)
 	}
 	for index, _ := range s[1 : end+1] {
 		if arr[s[index]-'a'] == 1 {
@@ -33,10 +36,17 @@ func findAnagrams(s string, p string) (result []int) {
 			diff++
 		}
 		arr[s[index]-'a']--
-		if arr[s[index+len(p)]-'a'] == 0 {
+		indexS := index + len(p)
+		if arr[s[indexS]-'a'] == 0 {
 			diff++
 		}
-		arr[s[index+len(p)]-'a']++
+		if arr[s[indexS]-'a'] == -1 {
+			diff--
+		}
+		arr[s[indexS]-'a']++
+		if diff == 0 {
+			result = append(result, index+1)
+		}
 	}
 	return
 }

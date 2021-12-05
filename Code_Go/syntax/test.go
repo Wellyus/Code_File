@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"sync"
-	"time"
 )
 
 type SafeCounter struct {
@@ -24,10 +23,13 @@ func (c *SafeCounter) Value(key string) int {
 }
 
 func main() {
-	c := SafeCounter{v: make(map[string]int)}
+	c := SafeCounter{
+		v: make(map[string]int),
+	}
 	for i := 0; i < 10000; i++ {
 		go c.Inc("somekey")
 	}
-	time.Sleep(time.Second)
-	fmt.Println(c.Value("somekey"))
+	defer func() {
+		fmt.Println(c.Value("somekey"))
+	}()
 }

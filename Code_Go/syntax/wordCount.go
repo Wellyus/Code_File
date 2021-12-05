@@ -19,4 +19,7 @@ func main() {
 	for key, value := range WordCount("Frida Frida Frida Wellyus") {
 		fmt.Println(key, value)
 	}
+	s := []string{fmt.Sprint(5), "is", "a", "string"}
+	slice := strings.Join(s, "__")
+	fmt.Println(slice)
 }
