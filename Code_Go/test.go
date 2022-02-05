@@ -7,6 +7,15 @@ import (
 	"runtime"
 )
 
+func main() {
+	server := http.Server{
+		Addr: ":8888",
+	}
+	http.HandleFunc("/helloo", hello)
+	http.HandleFunc("/world", log(world))
+	server.ListenAndServe()
+}
+
 type HelloHandler struct{}
 
 func (h *HelloHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -33,12 +42,4 @@ func log(h http.HandlerFunc) http.HandlerFunc {
 		fmt.Println("Handler function called - " + name)
 		h(w, r)
 	}
-}
-func main() {
-	server := http.Server{
-		Addr: ":8888",
-	}
-	http.HandleFunc("/helloo", hello)
-	http.HandleFunc("/world", log(world))
-	server.ListenAndServe()
 }
