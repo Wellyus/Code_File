@@ -1,9 +1,11 @@
 /*平衡数解决了二叉查找树退化为链表的情况，红黑树解决了平衡树插入和删除时多次旋转和调整的操作
 红黑树插入和删除节点的不会像平衡树一样频繁破坏红黑树的规则，不需要频繁调整*/
+
 const Colors = {
     RED:`red`,
     BLACK:`black`
 }
+
 function RedBlackNode(key){
     this.key = key;
     this.left = null;
